@@ -1954,9 +1954,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "BookableListItem"
+  name: "BookableListItem",
+  props: {
+    itemTitle: String,
+    itemContent: String,
+    itemPrice: Number
+  }
 });
 
 /***/ }),
@@ -1971,6 +1975,25 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37670,24 +37693,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v(_vm._s(_vm.itemTitle))]),
+    _vm._v(" "),
+    _c("p", [_vm._v(_vm._s(_vm.itemContent))])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("Title")]),
-      _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Ut leo. Maecenas egestas arcu quis ligula mattis placerat. Fusce a quam. Quisque malesuada placerat nisl.\n        Curabitur ligula sapien, tincidunt non, euismod vitae, posuere imperdiet, leo.\n    "
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37709,7 +37721,52 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_c("bookable-list-item")], 1)
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("bookable-list-item", {
+        attrs: {
+          "item-title": "Cheap villa 1",
+          "item-content": "A very cheap villa 1",
+          "item-price": 10000
+        }
+      }),
+      _vm._v(" "),
+      _c("bookable-list-item", {
+        attrs: {
+          "item-title": "Cheap villa 2",
+          "item-content": "A very cheap villa 2",
+          "item-price": 10000
+        }
+      }),
+      _vm._v(" "),
+      _c("bookable-list-item", {
+        attrs: {
+          "item-title": "Cheap villa 3",
+          "item-content": "A very cheap villa 3",
+          "item-price": 10000
+        }
+      }),
+      _vm._v(" "),
+      _c("bookable-list-item", {
+        attrs: {
+          "item-title": "Cheap villa 4",
+          "item-content": "A very cheap villa 4",
+          "item-price": 10000
+        }
+      }),
+      _vm._v(" "),
+      _c("bookable-list-item", {
+        attrs: {
+          "item-title": "Cheap villa 5",
+          "item-content": "A very cheap villa 5",
+          "item-price": 10000
+        }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
