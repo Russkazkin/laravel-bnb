@@ -13,7 +13,7 @@
     </head>
     <body>
         <div id="app">
-            <router-view></router-view>
+            <Index></Index>
         </div>
     </body>
 </html>
