@@ -2008,24 +2008,36 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bookable1: {
-        title: 'Cheap villa data 1',
-        content: 'A very cheap villa data ',
-        price: 10000
-      },
-      bookable2: {
-        title: 'Cheap villa data 1',
-        content: 'A very cheap villa data ',
-        price: 10000
-      }
+      bookable1: null,
+      bookable2: null
     };
   },
   created: function created() {
     var _this = this;
 
     setTimeout(function () {
-      _this.bookable1.title = 'Not so cheap villa';
+      _this.bookable1 = {
+        title: 'Cheap villa data 1',
+        content: 'A very cheap villa data ',
+        price: 10000
+      };
+      _this.bookable2 = {
+        title: 'Cheap villa data 2',
+        content: 'A very cheap villa data ',
+        price: 10000
+      };
+      _this.bookable3 = {
+        title: 'Cheap villa data 3',
+        content: 'A very cheap villa data ',
+        price: 10000
+      };
     }, 3000);
+    setTimeout(function () {
+      _this.bookable1.title = "You will see this!";
+    }, 5000);
+    setTimeout(function () {
+      _this.bookable3.title = "You won't see this!";
+    }, 7000);
   }
 });
 
@@ -37764,9 +37776,9 @@ var render = function() {
       _vm._v(" "),
       _c("bookable-list-item", {
         attrs: {
-          "item-title": "Cheap villa 3",
-          "item-content": "A very cheap villa 3",
-          "item-price": 10000
+          "item-title": _vm.bookable3.title,
+          "item-content": _vm.bookable3.content,
+          "item-price": _vm.bookable3.price
         }
       }),
       _vm._v(" "),
