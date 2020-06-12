@@ -2005,6 +2005,20 @@ __webpack_require__.r(__webpack_exports__);
   name: "Bookables",
   components: {
     BookableListItem: _BookableListItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      bookable1: {
+        title: 'Cheap villa data 1',
+        content: 'A very cheap villa data ',
+        price: 10000
+      },
+      bookable2: {
+        title: 'Cheap villa data 1',
+        content: 'A very cheap villa data ',
+        price: 10000
+      }
+    };
   }
 });
 

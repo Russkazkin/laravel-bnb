@@ -29,7 +29,21 @@
         name: "Bookables",
         components: {
             BookableListItem
-        }
+        },
+        data() {
+            return {
+                bookable1: {
+                    title: 'Cheap villa data 1',
+                    content: 'A very cheap villa data ',
+                    price: 10000,
+                },
+                bookable2: {
+                    title: 'Cheap villa data 1',
+                    content: 'A very cheap villa data ',
+                    price: 10000,
+                },
+            }
+        },
     }
 </script>
 
