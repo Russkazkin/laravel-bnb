@@ -2019,6 +2019,13 @@ __webpack_require__.r(__webpack_exports__);
         price: 10000
       }
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.bookable1.title = 'Not so cheap villa';
+    }, 3000);
   }
 });
 
@@ -37741,17 +37748,17 @@ var render = function() {
     [
       _c("bookable-list-item", {
         attrs: {
-          "item-title": "Cheap villa 1",
-          "item-content": "A very cheap villa 1",
-          "item-price": 10000
+          "item-title": _vm.bookable1.title,
+          "item-content": _vm.bookable1.content,
+          "item-price": _vm.bookable1.price
         }
       }),
       _vm._v(" "),
       _c("bookable-list-item", {
         attrs: {
-          "item-title": "Cheap villa 2",
-          "item-content": "A very cheap villa 2",
-          "item-price": 10000
+          "item-title": _vm.bookable2.title,
+          "item-content": _vm.bookable2.content,
+          "item-price": _vm.bookable2.price
         }
       }),
       _vm._v(" "),
