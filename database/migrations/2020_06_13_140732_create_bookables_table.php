@@ -17,6 +17,7 @@ class CreateBookablesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('image');
             $table->decimal('price');
             $table->string('address');
             $table->string('phone');
