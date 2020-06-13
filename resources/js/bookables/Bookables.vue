@@ -31,6 +31,7 @@
                 return this.items ? Math.ceil(this.items.length / this.columns) : 0;
             }
         },
+        methods: {},
         created() {
             this.loading = true;
             setTimeout(() => {
