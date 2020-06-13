@@ -1989,20 +1989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Bookables",
@@ -2011,30 +1997,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bookable1: null,
-      bookable2: null,
-      bookable3: null
+      items: null,
+      loading: false
     };
   },
   created: function created() {
     var _this = this;
 
+    this.loading = true;
     setTimeout(function () {
-      _this.bookable1 = {
+      _this.items = [{
         title: 'Cheap villa data 1',
-        content: 'A very cheap villa data ',
+        content: 'A very cheap villa data 1',
         price: 10000
-      };
-      _this.bookable2 = {
+      }, {
         title: 'Cheap villa data 2',
-        content: 'A very cheap villa data ',
+        content: 'A very cheap villa data 2',
         price: 10000
-      };
-      _this.bookable3 = {
+      }, {
         title: 'Cheap villa data 3',
-        content: 'A very cheap villa data ',
+        content: 'A very cheap villa data 3',
         price: 10000
-      };
+      }];
+      _this.loading = false;
     }, 2000);
   }
 });
@@ -37753,54 +37738,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm.bookable1
-      ? _c(
+    _vm.loading
+      ? _c("div", { staticClass: "container" }, [_vm._v("Loading...")])
+      : _c(
           "div",
           { staticClass: "container" },
-          [
-            _c("bookable-list-item", {
+          _vm._l(_vm.items, function(bookable, index) {
+            return _c("bookable-list-item", {
+              key: index,
               attrs: {
-                "item-title": _vm.bookable1.title,
-                "item-content": _vm.bookable1.content,
-                "item-price": _vm.bookable1.price
-              }
-            }),
-            _vm._v(" "),
-            _c("bookable-list-item", {
-              attrs: {
-                "item-title": _vm.bookable2.title,
-                "item-content": _vm.bookable2.content,
-                "item-price": _vm.bookable2.price
-              }
-            }),
-            _vm._v(" "),
-            _c("bookable-list-item", {
-              attrs: {
-                "item-title": _vm.bookable3.title,
-                "item-content": _vm.bookable3.content,
-                "item-price": _vm.bookable3.price
-              }
-            }),
-            _vm._v(" "),
-            _c("bookable-list-item", {
-              attrs: {
-                "item-title": "Cheap villa 4",
-                "item-content": "A very cheap villa 4",
-                "item-price": 10000
-              }
-            }),
-            _vm._v(" "),
-            _c("bookable-list-item", {
-              attrs: {
-                "item-title": "Cheap villa 5",
-                "item-content": "A very cheap villa 5",
-                "item-price": 10000
+                "item-title": bookable.title,
+                "item-content": bookable.content,
+                "item-price": bookable.price
               }
             })
-          ],
+          }),
           1
         )
-      : _c("div", { staticClass: "container" }, [_vm._v("Loading...")])
   ])
 }
 var staticRenderFns = []
