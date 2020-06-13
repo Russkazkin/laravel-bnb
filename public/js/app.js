@@ -1954,6 +1954,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookableListItem",
   props: {
@@ -2018,9 +2021,25 @@ __webpack_require__.r(__webpack_exports__);
         title: 'Cheap villa data 3',
         content: 'A very cheap villa data 3',
         price: 10000
+      }, {
+        title: 'Cheap villa data 4',
+        content: 'A very cheap villa data 3',
+        price: 10000
+      }, {
+        title: 'Cheap villa data 5',
+        content: 'A very cheap villa data 3',
+        price: 10000
+      }, {
+        title: 'Cheap villa data 6',
+        content: 'A very cheap villa data 3',
+        price: 10000
+      }, {
+        title: 'Cheap villa data 7',
+        content: 'A very cheap villa data 3',
+        price: 10000
       }];
       _this.loading = false;
-    }, 2000);
+    }, 1000);
   }
 });
 
@@ -37709,11 +37728,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v(_vm._s(_vm.itemTitle))]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.itemContent))])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "card bookable-card mx-2 mb-3",
+      staticStyle: { width: "18rem" }
+    },
+    [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: "/img/villa.jpg", alt: "..." }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title" }, [
+          _vm._v(_vm._s(_vm.itemTitle))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(_vm._s(_vm.itemContent))
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
+          _vm._v("Book")
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37742,7 +37783,7 @@ var render = function() {
       ? _c("div", { staticClass: "container" }, [_vm._v("Loading...")])
       : _c(
           "div",
-          { staticClass: "container" },
+          { staticClass: "container d-flex justify-content-center flex-wrap" },
           _vm._l(_vm.items, function(bookable, index) {
             return _c("bookable-list-item", {
               key: index,

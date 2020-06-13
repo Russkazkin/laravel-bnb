@@ -1,7 +1,7 @@
 <template>
 <div>
     <div v-if="loading" class="container">Loading...</div>
-    <div v-else class="container">
+    <div v-else class="container d-flex justify-content-center flex-wrap">
         <bookable-list-item :item-title="bookable.title"
                             :item-content="bookable.content"
                             :item-price="bookable.price"
@@ -43,10 +43,31 @@
                         title: 'Cheap villa data 3',
                         content: 'A very cheap villa data 3',
                         price: 10000,
-                    }
+                    },
+                    {
+                        title: 'Cheap villa data 4',
+                        content: 'A very cheap villa data 3',
+                        price: 10000,
+                    },
+                    {
+                        title: 'Cheap villa data 5',
+                        content: 'A very cheap villa data 3',
+                        price: 10000,
+                    },
+                    {
+                        title: 'Cheap villa data 6',
+                        content: 'A very cheap villa data 3',
+                        price: 10000,
+                    },
+                    {
+                        title: 'Cheap villa data 7',
+                        content: 'A very cheap villa data 3',
+                        price: 10000,
+                    },
+
                 ];
                 this.loading = false;
-            }, 2000);
+            }, 1000);
 
         }
     }
