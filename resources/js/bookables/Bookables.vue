@@ -23,6 +23,12 @@
             return {
                 items: null,
                 loading: false,
+                columns: 3,
+            }
+        },
+        computed: {
+            rows() {
+                return this.items ? Math.ceil(this.items.length / this.columns) : 0;
             }
         },
         created() {
