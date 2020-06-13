@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Bookable::class, function (Faker $faker) {
     return [
-        'name' => 'Villa' . $faker->name,
+        'name' => 'Villa ' . $faker->name,
         'description' => $faker->paragraph(5),
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,

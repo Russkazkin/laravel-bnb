@@ -1,0 +1,17 @@
+<?php
+
+use App\Bookable;
+use Illuminate\Database\Seeder;
+
+class BookablesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(Bookable::class, 21)->create();
+    }
+}
