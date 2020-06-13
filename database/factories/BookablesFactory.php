@@ -4,11 +4,25 @@
 
 use App\Bookable;
 use Faker\Generator as Faker;
+use Illuminate\Support\Arr;
 
-$factory->define(Bookable::class, function (Faker $faker) {
+$suffix = [
+    'Villa',
+    'House',
+    'Cottage',
+    'Luxury Villas',
+    'Cheap House',
+    'Rooms',
+    'Cheap Rooms',
+    'Luxury Rooms',
+    'Fancy Rooms',
+];
+
+$factory->define(Bookable::class, function (Faker $faker) use ($suffix) {
     return [
-        'name' => 'Villa ' . $faker->name,
+        'name' => $faker->city . ' ' . Arr::random($suffix),
         'description' => $faker->paragraph(5),
+        'price' => $faker->randomNumber(4),
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
         'email' => $faker->unique()->safeEmail,
