@@ -1960,9 +1960,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookableListItem",
   props: {
-    itemTitle: String,
-    itemContent: String,
-    itemPrice: Number
+    itemName: String,
+    itemDescription: String,
+    itemPrice: String
   }
 });
 
@@ -2015,38 +2015,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading = true;
-    setTimeout(function () {
-      _this.items = [{
-        title: 'Cheap villa data 1',
-        content: 'A very cheap villa data 1',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 2',
-        content: 'A very cheap villa data 2',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 3',
-        content: 'A very cheap villa data 3',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 4',
-        content: 'A very cheap villa data 3',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 5',
-        content: 'A very cheap villa data 3',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 6',
-        content: 'A very cheap villa data 3',
-        price: 10000
-      }, {
-        title: 'Cheap villa data 7',
-        content: 'A very cheap villa data 3',
-        price: 10000
-      }];
+    axios.get("/api/bookables").then(function (response) {
+      _this.items = response.data;
       _this.loading = false;
-    }, 1000);
+    });
   }
 });
 
@@ -37748,12 +37720,10 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.itemTitle))
-        ]),
+        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.itemName))]),
         _vm._v(" "),
         _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.itemContent))
+          _vm._v(_vm._s(_vm.itemDescription))
         ]),
         _vm._v(" "),
         _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
@@ -37791,13 +37761,13 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "container d-flex justify-content-center flex-wrap" },
-          _vm._l(_vm.items, function(bookable, index) {
+          _vm._l(_vm.items, function(item, index) {
             return _c("bookable-list-item", {
               key: index,
               attrs: {
-                "item-title": bookable.title,
-                "item-content": bookable.content,
-                "item-price": bookable.price
+                "item-name": item.name,
+                "item-description": item.description,
+                "item-price": item.price
               }
             })
           }),
