@@ -1,6 +1,6 @@
 <template>
     <div class="card bookable-card mx-2 mb-3" style="width: 18rem;">
-        <img src="/img/villa.jpg" class="card-img-top" alt="...">
+        <img src="/img/villa.jpg" class="card-img-top" alt="">
         <div class="card-body">
             <h5 class="card-title">{{ itemName }}</h5>
             <p class="card-text">{{ itemDescription }}</p>
@@ -15,7 +15,8 @@
         props: {
             itemName: String,
             itemDescription: String,
-            itemPrice: String
+            itemPrice: String,
+            itemImage: String,
         }
     }
 </script>

@@ -5,6 +5,7 @@
         <bookable-list-item :item-name="item.name"
                             :item-description="item.description"
                             :item-price="item.price"
+                            :item-image="item.image"
                             v-for="(item, index) in items"
                             :key="index"
         ></bookable-list-item>

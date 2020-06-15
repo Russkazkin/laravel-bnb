@@ -1962,7 +1962,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     itemName: String,
     itemDescription: String,
-    itemPrice: String
+    itemPrice: String,
+    itemImage: String
   }
 });
 
@@ -1978,6 +1979,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
+//
 //
 //
 //
@@ -37716,7 +37718,7 @@ var render = function() {
     [
       _c("img", {
         staticClass: "card-img-top",
-        attrs: { src: "/img/villa.jpg", alt: "..." }
+        attrs: { src: "/img/villa.jpg", alt: "" }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
@@ -37767,7 +37769,8 @@ var render = function() {
               attrs: {
                 "item-name": item.name,
                 "item-description": item.description,
-                "item-price": item.price
+                "item-price": item.price,
+                "item-image": item.image
               }
             })
           }),
