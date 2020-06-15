@@ -10940,3 +10940,7 @@ a.text-dark:focus {
   flex: 0 0 350px;
 }
 
+.color-white {
+  color: #fff;
+}
+

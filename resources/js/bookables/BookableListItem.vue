@@ -1,10 +1,12 @@
 <template>
     <div class="card bookable-card mx-2 mb-3" style="width: 18rem;">
-        <img src="/img/villa.jpg" class="card-img-top" alt="">
+        <router-link :to="{name: 'bookable', params: { id }}">
+            <img src="/img/villa.jpg" class="card-img-top" alt="">
+        </router-link>
         <div class="card-body">
-            <h5 class="card-title">{{ itemName }}</h5>
-            <p class="card-text">{{ itemDescription }}</p>
-            <a href="#" class="btn btn-primary">Book</a>
+            <h5 class="card-title">{{ name }}</h5>
+            <p class="card-text">{{ description }}</p>
+            <router-link class="btn btn-info color-white" :to="{name: 'bookable', params: { id }}">More</router-link>
         </div>
     </div>
 </template>
@@ -13,10 +15,11 @@
     export default {
         name: "BookableListItem",
         props: {
-            itemName: String,
-            itemDescription: String,
-            itemPrice: String,
-            itemImage: String,
+            id: Number,
+            name: String,
+            description: String,
+            price: String,
+            image: String,
         }
     }
 </script>

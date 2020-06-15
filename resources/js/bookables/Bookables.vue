@@ -2,12 +2,9 @@
 <div>
     <div v-if="loading" class="container">Loading...</div>
     <div v-else class="container d-flex justify-content-center flex-wrap">
-        <bookable-list-item :item-name="item.name"
-                            :item-description="item.description"
-                            :item-price="item.price"
-                            :item-image="item.image"
-                            v-for="(item, index) in items"
-                            :key="index"
+        <bookable-list-item v-bind="item"
+                            v-for="item in items"
+                            :key="item.id"
         ></bookable-list-item>
     </div>
 </div>

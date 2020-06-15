@@ -1987,13 +1987,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "BookableListItem",
   props: {
-    itemName: String,
-    itemDescription: String,
-    itemPrice: String,
-    itemImage: String
+    id: Number,
+    name: String,
+    description: String,
+    price: String,
+    image: String
   }
 });
 
@@ -2009,9 +2012,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BookableListItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BookableListItem */ "./resources/js/bookables/BookableListItem.vue");
-//
-//
-//
 //
 //
 //
@@ -37723,23 +37723,40 @@ var render = function() {
       staticStyle: { width: "18rem" }
     },
     [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: { src: "/img/villa.jpg", alt: "" }
-      }),
+      _c(
+        "router-link",
+        { attrs: { to: { name: "bookable", params: { id: _vm.id } } } },
+        [
+          _c("img", {
+            staticClass: "card-img-top",
+            attrs: { src: "/img/villa.jpg", alt: "" }
+          })
+        ]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.itemName))]),
-        _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [
-          _vm._v(_vm._s(_vm.itemDescription))
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary", attrs: { href: "#" } }, [
-          _vm._v("Book")
-        ])
-      ])
-    ]
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.name))]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text" }, [
+            _vm._v(_vm._s(_vm.description))
+          ]),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-info color-white",
+              attrs: { to: { name: "bookable", params: { id: _vm.id } } }
+            },
+            [_vm._v("More")]
+          )
+        ],
+        1
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -37770,16 +37787,11 @@ var render = function() {
       : _c(
           "div",
           { staticClass: "container d-flex justify-content-center flex-wrap" },
-          _vm._l(_vm.items, function(item, index) {
-            return _c("bookable-list-item", {
-              key: index,
-              attrs: {
-                "item-name": item.name,
-                "item-description": item.description,
-                "item-price": item.price,
-                "item-image": item.image
-              }
-            })
+          _vm._l(_vm.items, function(item) {
+            return _c(
+              "bookable-list-item",
+              _vm._b({ key: item.id }, "bookable-list-item", item, false)
+            )
           }),
           1
         )
