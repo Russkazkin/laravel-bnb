@@ -61,7 +61,7 @@
             axios
                 .get(`/api/bookables/${this.$route.params.id}`)
                 .then(response => {
-                    this.item = response.data;
+                    this.item = response.data.data;
                     this.loading = false;
                 });
         }

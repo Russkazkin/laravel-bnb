@@ -35,7 +35,7 @@
             axios
                 .get("/api/bookables")
                 .then(response => {
-                    this.items = response.data;
+                    this.items = response.data.data;
                     this.loading = false;
                 });
         }

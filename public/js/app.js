@@ -2005,7 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
-      _this.item = response.data;
+      _this.item = response.data.data;
       _this.loading = false;
     });
   }
@@ -2099,7 +2099,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/bookables").then(function (response) {
-      _this.items = response.data;
+      _this.items = response.data.data;
       _this.loading = false;
     });
   }
