@@ -2005,7 +2005,6 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
-      console.log(response.data);
       _this.item = response.data;
       _this.loading = false;
     });
