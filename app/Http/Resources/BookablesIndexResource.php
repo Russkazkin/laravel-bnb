@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Bookable;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BookablesIndexResource extends JsonResource
@@ -14,6 +15,11 @@ class BookablesIndexResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        /**
+         * @var $this Bookable
+         */
+        return [
+
+        ];
     }
 }
