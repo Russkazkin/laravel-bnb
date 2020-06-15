@@ -6,10 +6,37 @@
                 <div v-if="this.loading">Loading...</div>
                 <div v-else class="card">
                     <div class="card-header">
-                        {{ item.name }}
+                        <h5 class="mb-0">{{ item.name }}</h5>
                     </div>
+                    <img src="/img/villa.jpg" alt="" width="100%">
                     <div class="card-body">
-                        {{ item.description }}
+                        <p>
+                            {{ item.description }}
+                        </p>
+                        <div class="item-price">
+                            <span class="font-weight-bold">
+                                Price:
+                            </span>
+                            {{ item.price }} US$
+                        </div>
+                        <div class="item-address">
+                            <span class="font-weight-bold">
+                                Address:
+                            </span>
+                            {{ item.address }}
+                        </div>
+                        <div class="item-price">
+                            <span class="font-weight-bold">
+                                Email:
+                            </span>
+                            {{ item.email }}
+                        </div>
+                        <div class="item-phone">
+                            <span class="font-weight-bold">
+                                Phone:
+                            </span>
+                            {{ item.phone }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,6 +61,7 @@
             axios
                 .get(`/api/bookables/${this.$route.params.id}`)
                 .then(response => {
+                    console.log(response.data);
                     this.item = response.data;
                     this.loading = false;
                 });

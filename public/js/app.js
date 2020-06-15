@@ -1965,6 +1965,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Bookable",
   data: function data() {
@@ -1978,6 +2005,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
+      console.log(response.data);
       _this.item = response.data;
       _this.loading = false;
     });
@@ -37723,19 +37751,75 @@ var render = function() {
           ? _c("div", [_vm._v("Loading...")])
           : _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.item.name) +
-                    "\n                "
-                )
+                _c("h5", { staticClass: "mb-0" }, [
+                  _vm._v(_vm._s(_vm.item.name))
+                ])
               ]),
               _vm._v(" "),
+              _c("img", {
+                attrs: { src: "/img/villa.jpg", alt: "", width: "100%" }
+              }),
+              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(_vm.item.description) +
-                    "\n                "
-                )
+                _c("p", [
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.item.description) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "item-price" }, [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                            Price:\n                        "
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.item.price) +
+                      " US$\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "item-address" }, [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                            Address:\n                        "
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.item.address) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "item-price" }, [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                            Email:\n                        "
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.item.email) +
+                      "\n                    "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "item-phone" }, [
+                  _c("span", { staticClass: "font-weight-bold" }, [
+                    _vm._v(
+                      "\n                            Phone:\n                        "
+                    )
+                  ]),
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(_vm.item.phone) +
+                      "\n                    "
+                  )
+                ])
               ])
             ])
       ]),
