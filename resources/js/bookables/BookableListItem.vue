@@ -4,9 +4,14 @@
             <img src="/img/villa.jpg" class="card-img-top" alt="">
         </router-link>
         <div class="card-body">
+            <h2 class="mb-3">
+                <span class="badge badge-success">
+                    Price: {{ price }} $US
+                </span>
+            </h2>
             <h5 class="card-title">{{ name }}</h5>
             <p class="card-text">{{ description }}</p>
-            <router-link class="btn btn-info color-white" :to="{name: 'bookable', params: { id }}">More</router-link>
+            <router-link class="btn btn-info color-white bookable-more-btn" :to="{name: 'bookable', params: { id }}">More</router-link>
         </div>
     </div>
 </template>

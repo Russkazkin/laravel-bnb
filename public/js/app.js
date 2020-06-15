@@ -1949,18 +1949,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Bookable",
   data: function data() {
     return {
-      item: null
+      item: null,
+      loading: false
     };
   },
   created: function created() {
     var _this = this;
 
+    this.loading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
       _this.item = response.data;
+      _this.loading = false;
     });
   }
 });
@@ -1976,6 +1995,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37692,9 +37716,44 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        this.loading
+          ? _c("div", [_vm._v("Loading...")])
+          : _c("div", { staticClass: "card" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.item.name) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.item.description) +
+                    "\n                "
+                )
+              ])
+            ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("h3", [_vm._v("Availability and prices")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -37738,6 +37797,16 @@ var render = function() {
         "div",
         { staticClass: "card-body" },
         [
+          _c("h2", { staticClass: "mb-3" }, [
+            _c("span", { staticClass: "badge badge-success" }, [
+              _vm._v(
+                "\n                Price: " +
+                  _vm._s(_vm.price) +
+                  " $US\n            "
+              )
+            ])
+          ]),
+          _vm._v(" "),
           _c("h5", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.name))]),
           _vm._v(" "),
           _c("p", { staticClass: "card-text" }, [
@@ -37747,7 +37816,7 @@ var render = function() {
           _c(
             "router-link",
             {
-              staticClass: "btn btn-info color-white",
+              staticClass: "btn btn-info color-white bookable-more-btn",
               attrs: { to: { name: "bookable", params: { id: _vm.id } } }
             },
             [_vm._v("More")]
