@@ -1,7 +1,7 @@
 <template>
     <div>
         <h6 class="text-uppercase font-weight-bolder text-secondary">Check availability</h6>
-        <form action="">
+        <form method="POST" id="checkoutForm" @submit.prevent="check()">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="from">From</label>
@@ -34,6 +34,11 @@
             return {
                 from: null,
                 to: null,
+            }
+        },
+        methods: {
+            check() {
+                console.log('it works!');
             }
         },
     }

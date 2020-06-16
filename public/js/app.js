@@ -1979,6 +1979,11 @@ __webpack_require__.r(__webpack_exports__);
       from: null,
       to: null
     };
+  },
+  methods: {
+    check: function check() {
+      console.log('it works!');
+    }
   }
 });
 
@@ -38450,80 +38455,92 @@ var render = function() {
       [_vm._v("Check availability")]
     ),
     _vm._v(" "),
-    _c("form", { attrs: { action: "" } }, [
-      _c("div", { staticClass: "form-row" }, [
-        _c("div", { staticClass: "form-group col-md-6" }, [
-          _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.from,
-                expression: "from"
-              }
-            ],
-            staticClass: "form-control form-control-sm",
-            attrs: {
-              type: "text",
-              name: "from",
-              id: "from",
-              placeholder: "Start Date"
-            },
-            domProps: { value: _vm.from },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+    _c(
+      "form",
+      {
+        attrs: { method: "POST", id: "checkoutForm" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.check()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-row" }, [
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.from,
+                  expression: "from"
                 }
-                _vm.from = $event.target.value
+              ],
+              staticClass: "form-control form-control-sm",
+              attrs: {
+                type: "text",
+                name: "from",
+                id: "from",
+                placeholder: "Start Date"
+              },
+              domProps: { value: _vm.from },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.from = $event.target.value
+                }
               }
-            }
-          })
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group col-md-6" }, [
+            _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.to,
+                  expression: "to"
+                }
+              ],
+              staticClass: "form-control form-control-sm",
+              attrs: {
+                type: "text",
+                name: "to",
+                id: "to",
+                placeholder: "End Date"
+              },
+              domProps: { value: _vm.to },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.to = $event.target.value
+                }
+              }
+            })
+          ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "form-group col-md-6" }, [
-          _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.to,
-                expression: "to"
-              }
-            ],
-            staticClass: "form-control form-control-sm",
-            attrs: {
-              type: "text",
-              name: "to",
-              id: "to",
-              placeholder: "End Date"
-            },
-            domProps: { value: _vm.to },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.to = $event.target.value
-              }
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-sm btn-block btn-secondary",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Check")]
-      )
-    ])
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-sm btn-block btn-secondary",
+            attrs: { type: "submit" }
+          },
+          [_vm._v("Check")]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = []
