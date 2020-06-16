@@ -1970,8 +1970,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Availability"
+  name: "Availability",
+  data: function data() {
+    return {
+      from: null,
+      to: null
+    };
+  }
 });
 
 /***/ }),
@@ -38435,63 +38443,90 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c(
-        "h6",
-        { staticClass: "text-uppercase font-weight-bolder text-secondary" },
-        [_vm._v("Check availability")]
-      ),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "" } }, [
-        _c("div", { staticClass: "form-row" }, [
-          _c("div", { staticClass: "form-group col-md-6" }, [
-            _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                name: "from",
-                id: "from",
-                placeholder: "Start Date"
-              }
-            })
-          ]),
+  return _c("div", [
+    _c(
+      "h6",
+      { staticClass: "text-uppercase font-weight-bolder text-secondary" },
+      [_vm._v("Check availability")]
+    ),
+    _vm._v(" "),
+    _c("form", { attrs: { action: "" } }, [
+      _c("div", { staticClass: "form-row" }, [
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-6" }, [
-            _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
-            _vm._v(" "),
-            _c("input", {
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                name: "to",
-                id: "to",
-                placeholder: "End Date"
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.from,
+                expression: "from"
               }
-            })
-          ])
+            ],
+            staticClass: "form-control form-control-sm",
+            attrs: {
+              type: "text",
+              name: "from",
+              id: "from",
+              placeholder: "Start Date"
+            },
+            domProps: { value: _vm.from },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.from = $event.target.value
+              }
+            }
+          })
         ]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-sm btn-block btn-secondary",
-            attrs: { type: "submit" }
-          },
-          [_vm._v("Check")]
-        )
-      ])
+        _c("div", { staticClass: "form-group col-md-6" }, [
+          _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.to,
+                expression: "to"
+              }
+            ],
+            staticClass: "form-control form-control-sm",
+            attrs: {
+              type: "text",
+              name: "to",
+              id: "to",
+              placeholder: "End Date"
+            },
+            domProps: { value: _vm.to },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.to = $event.target.value
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-sm btn-block btn-secondary",
+          attrs: { type: "submit" }
+        },
+        [_vm._v("Check")]
+      )
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

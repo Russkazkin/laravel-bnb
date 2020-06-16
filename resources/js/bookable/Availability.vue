@@ -8,6 +8,7 @@
                     <input type="text"
                            name="from"
                            id="from"
+                           v-model="from"
                            placeholder="Start Date"
                            class="form-control form-control-sm">
                 </div>
@@ -16,6 +17,7 @@
                     <input type="text"
                            name="to"
                            id="to"
+                           v-model="to"
                            placeholder="End Date"
                            class="form-control form-control-sm">
                 </div>
@@ -27,7 +29,13 @@
 
 <script>
     export default {
-        name: "Availability"
+        name: "Availability",
+        data(){
+            return {
+                from: null,
+                to: null,
+            }
+        },
     }
 </script>
 
