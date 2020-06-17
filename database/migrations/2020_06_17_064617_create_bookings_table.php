@@ -15,6 +15,9 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
+            $table->date('from');
+            $table->date('to');
+            $table->foreignId('bookable_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +29,9 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
+        Schema::table('bookings', function (Blueprint $table){
+            $table->dropForeign('bookable_id');
+        });
         Schema::dropIfExists('bookings');
     }
 }
