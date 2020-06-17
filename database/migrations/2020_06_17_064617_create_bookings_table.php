@@ -30,7 +30,7 @@ class CreateBookingsTable extends Migration
     public function down()
     {
         Schema::table('bookings', function (Blueprint $table){
-            $table->dropForeign('bookable_id');
+            $table->dropForeign(['bookable_id']);
         });
         Schema::dropIfExists('bookings');
     }
