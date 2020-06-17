@@ -1,7 +1,5 @@
 <?php
 
-use App\Bookable;
-use App\Http\Controllers\Api\BookablesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('bookables', 'Api\BookablesController')->only(['index', 'show']);
+Route::get('bookables/{bookable}/availability', 'Api\BookableAvailabilityController')->name('bookables.availability.check');
