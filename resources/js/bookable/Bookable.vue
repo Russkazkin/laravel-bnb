@@ -68,6 +68,9 @@
                 .then(response => {
                     this.item = response.data.data;
                     this.loading = false;
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
     }

@@ -37,6 +37,9 @@
                 .then(response => {
                     this.items = response.data.data;
                     this.loading = false;
+                })
+                .catch(error => {
+                    console.log(error);
                 });
         }
     }
