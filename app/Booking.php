@@ -23,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereTo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Bookable $bookable
  */
 class Booking extends Model
 {

@@ -31,6 +31,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Bookable wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Bookable whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Booking[] $bookings
+ * @property-read int|null $bookings_count
  */
 class Bookable extends Model
 {

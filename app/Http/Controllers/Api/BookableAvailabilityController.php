@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Bookable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckBookableAvailabilityRequest;
 use Illuminate\Http\Request;
@@ -11,11 +12,12 @@ class BookableAvailabilityController extends Controller
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CheckBookableAvailabilityRequest $request
+     * @param Bookable $bookable
+     * @return void
      */
-    public function __invoke(CheckBookableAvailabilityRequest $request)
+    public function __invoke(CheckBookableAvailabilityRequest $request, Bookable $bookable)
     {
-        dd($request['to']);
+        dd($bookable->bookings);
     }
 }
