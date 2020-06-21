@@ -14,10 +14,10 @@ class BookableAvailabilityController extends Controller
      *
      * @param CheckBookableAvailabilityRequest $request
      * @param Bookable $bookable
-     * @return void
+     * @return bool
      */
     public function __invoke(CheckBookableAvailabilityRequest $request, Bookable $bookable)
     {
-        dd($bookable->bookings()->betweenDates($request['from'], $request['to'])->count());
+        return $bookable->checkAvailabilityFor($request['from'], $request['to']);
     }
 }

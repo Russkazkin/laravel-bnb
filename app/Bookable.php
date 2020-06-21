@@ -40,4 +40,14 @@ class Bookable extends Model
     {
         return $this->hasMany(Booking::class);
     }
+
+    /**
+     * @param $from
+     * @param $to
+     * @return bool
+     */
+    public function checkAvailabilityFor($from, $to) : bool
+    {
+        return 0 === $this->bookings()->betweenDates($from, $to)->count();
+    }
 }
