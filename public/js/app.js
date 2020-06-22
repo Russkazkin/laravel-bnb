@@ -2001,6 +2001,20 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.status);
         _this.loading = false;
       });
+    },
+    errorFor: function errorFor(field) {
+      return this.hasErrors && this.errors[field] ? this.errors[field] : null;
+    }
+  },
+  computed: {
+    hasErrors: function hasErrors() {
+      return this.status === 422 && this.error !== null;
+    },
+    isAvailable: function isAvailable() {
+      return this.status === 200;
+    },
+    notAvailable: function notAvailable() {
+      return this.status === 404;
     }
   }
 });

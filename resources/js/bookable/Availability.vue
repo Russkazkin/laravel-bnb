@@ -58,8 +58,22 @@
                         console.log(this.status);
                         this.loading = false;
                     });
-            }
+            },
+            errorFor(field){
+                return this.hasErrors && this.errors[field] ? this.errors[field] : null;
+            },
         },
+        computed: {
+            hasErrors() {
+                return this.status === 422 && this.error !== null;
+            },
+            isAvailable() {
+                return this.status === 200;
+            },
+            notAvailable() {
+                return this.status === 404;
+            },
+        }
     }
 </script>
 
