@@ -22,7 +22,7 @@
                            class="form-control form-control-sm">
                 </div>
             </div>
-            <button type="submit" class="btn btn-sm btn-block btn-secondary">Check</button>
+            <button type="submit" class="btn btn-sm btn-block btn-secondary" :disabled="loading">Check</button>
         </form>
     </div>
 </template>
@@ -34,11 +34,30 @@
             return {
                 from: null,
                 to: null,
+                loading: false,
+                status: null,
+                errors: null,
             }
         },
         methods: {
             check() {
-                console.log('it works!');
+                this.loading = true;
+                this.errors = null;
+                axios
+                    .get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`)
+                    .then(response => {
+                        this.status = response.status;
+                    })
+                    .catch(error => {
+                        if(error.response.status === 422) {
+                            this.errors = error.response.data.errors;
+                        }
+                        this.status = error.response.status;
+                    })
+                    .then(() => {
+                        console.log(this.status);
+                        this.loading = false;
+                    });
             }
         },
     }

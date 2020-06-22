@@ -1977,12 +1977,30 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       from: null,
-      to: null
+      to: null,
+      loading: false,
+      status: null,
+      errors: null
     };
   },
   methods: {
     check: function check() {
-      console.log('it works!');
+      var _this = this;
+
+      this.loading = true;
+      this.errors = null;
+      axios.get("/api/bookables/".concat(this.$route.params.id, "/availability?from=").concat(this.from, "&to=").concat(this.to)).then(function (response) {
+        _this.status = response.status;
+      })["catch"](function (error) {
+        if (error.response.status === 422) {
+          _this.errors = error.response.data.errors;
+        }
+
+        _this.status = error.response.status;
+      }).then(function () {
+        console.log(_this.status);
+        _this.loading = false;
+      });
     }
   }
 });
@@ -2067,6 +2085,8 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (response) {
       _this.item = response.data.data;
       _this.loading = false;
+    })["catch"](function (error) {
+      console.log(error);
     });
   }
 });
@@ -2161,6 +2181,8 @@ __webpack_require__.r(__webpack_exports__);
     axios.get("/api/bookables").then(function (response) {
       _this.items = response.data.data;
       _this.loading = false;
+    })["catch"](function (error) {
+      console.log(error);
     });
   }
 });
@@ -38535,7 +38557,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-sm btn-block btn-secondary",
-            attrs: { type: "submit" }
+            attrs: { type: "submit", disabled: _vm.loading }
           },
           [_vm._v("Check")]
         )
