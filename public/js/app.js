@@ -1972,6 +1972,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Availability",
   data: function data() {
@@ -1998,11 +2016,10 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.status = error.response.status;
       }).then(function () {
-        console.log(_this.status);
         _this.loading = false;
       });
     },
-    errorFor: function errorFor(field) {
+    errorsFor: function errorsFor(field) {
       return this.hasErrors && this.errors[field] ? this.errors[field] : null;
     }
   },
@@ -38488,7 +38505,18 @@ var render = function() {
     _c(
       "h6",
       { staticClass: "text-uppercase font-weight-bolder text-secondary" },
-      [_vm._v("Check availability")]
+      [
+        _vm._v("\n        Check availability\n        "),
+        _vm.notAvailable
+          ? _c("span", { staticClass: "text-danger" }, [
+              _vm._v("(not available)")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.isAvailable
+          ? _c("span", { staticClass: "text-success" }, [_vm._v("(available)")])
+          : _vm._e()
+      ]
     ),
     _vm._v(" "),
     _c(
@@ -38504,67 +38532,110 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "form-row" }, [
-          _c("div", { staticClass: "form-group col-md-6" }, [
-            _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.from,
-                  expression: "from"
-                }
-              ],
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                name: "from",
-                id: "from",
-                placeholder: "Start Date"
-              },
-              domProps: { value: _vm.from },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _c(
+            "div",
+            { staticClass: "form-group col-md-6" },
+            [
+              _c("label", { attrs: { for: "from" } }, [_vm._v("From")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.from,
+                    expression: "from"
                   }
-                  _vm.from = $event.target.value
+                ],
+                staticClass: "form-control form-control-sm",
+                class: [{ "is-invalid": this.errorsFor("from") }],
+                attrs: {
+                  type: "text",
+                  name: "from",
+                  id: "from",
+                  placeholder: "Start Date"
+                },
+                domProps: { value: _vm.from },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.from = $event.target.value
+                  }
                 }
-              }
-            })
-          ]),
+              }),
+              _vm._v(" "),
+              _vm._l(this.errorsFor("from"), function(error, index) {
+                return _c(
+                  "div",
+                  {
+                    key: "from-error-" + index,
+                    staticClass: "invalid-feedback"
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(error) +
+                        "\n                "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group col-md-6" }, [
-            _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.to,
-                  expression: "to"
-                }
-              ],
-              staticClass: "form-control form-control-sm",
-              attrs: {
-                type: "text",
-                name: "to",
-                id: "to",
-                placeholder: "End Date"
-              },
-              domProps: { value: _vm.to },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _c(
+            "div",
+            { staticClass: "form-group col-md-6" },
+            [
+              _c("label", { attrs: { for: "to" } }, [_vm._v("To")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.to,
+                    expression: "to"
                   }
-                  _vm.to = $event.target.value
+                ],
+                staticClass: "form-control form-control-sm",
+                class: [{ "is-invalid": this.errorsFor("to") }],
+                attrs: {
+                  type: "text",
+                  name: "to",
+                  id: "to",
+                  placeholder: "End Date"
+                },
+                domProps: { value: _vm.to },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.to = $event.target.value
+                  }
                 }
-              }
-            })
-          ])
+              }),
+              _vm._v(" "),
+              _vm._l(this.errorsFor("to"), function(error, index) {
+                return _c(
+                  "div",
+                  { key: "to-error-" + index, staticClass: "invalid-feedback" },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(error) +
+                        "\n                "
+                    )
+                  ]
+                )
+              })
+            ],
+            2
+          )
         ]),
         _vm._v(" "),
         _c(

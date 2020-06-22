@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h6 class="text-uppercase font-weight-bolder text-secondary">Check availability</h6>
+        <h6 class="text-uppercase font-weight-bolder text-secondary">
+            Check availability
+            <span v-if="notAvailable" class="text-danger">(not available)</span>
+            <span v-if="isAvailable" class="text-success">(available)</span>
+        </h6>
         <form method="POST" id="checkoutForm" @submit.prevent="check()">
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -10,8 +14,15 @@
                            id="from"
                            v-model="from"
                            placeholder="Start Date"
-                           class="form-control form-control-sm">
+                           class="form-control form-control-sm"
+                           :class="[{'is-invalid' : this.errorsFor('from')}]">
+                    <div class="invalid-feedback"
+                         v-for="(error, index) in this.errorsFor('from')"
+                         :key="'from-error-' + index">
+                        {{ error }}
+                    </div>
                 </div>
+
                 <div class="form-group col-md-6">
                     <label for="to">To</label>
                     <input type="text"
@@ -19,8 +30,15 @@
                            id="to"
                            v-model="to"
                            placeholder="End Date"
-                           class="form-control form-control-sm">
+                           class="form-control form-control-sm"
+                           :class="[{'is-invalid' : this.errorsFor('to')}]">
+                    <div class="invalid-feedback"
+                         v-for="(error, index) in this.errorsFor('to')"
+                         :key="'to-error-' + index">
+                        {{ error }}
+                    </div>
                 </div>
+
             </div>
             <button type="submit" class="btn btn-sm btn-block btn-secondary" :disabled="loading">Check</button>
         </form>
@@ -55,11 +73,10 @@
                         this.status = error.response.status;
                     })
                     .then(() => {
-                        console.log(this.status);
                         this.loading = false;
                     });
             },
-            errorFor(field){
+            errorsFor(field){
                 return this.hasErrors && this.errors[field] ? this.errors[field] : null;
             },
         },
