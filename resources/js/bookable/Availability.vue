@@ -61,20 +61,21 @@
             check() {
                 this.loading = true;
                 this.errors = null;
-                axios
-                    .get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`)
-                    .then(response => {
+                (async () => {
+                    try {
+                        const response = await axios.get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`);
                         this.status = response.status;
-                    })
-                    .catch(error => {
+                    }
+                    catch (error) {
                         if(error.response.status === 422) {
                             this.errors = error.response.data.errors;
                         }
                         this.status = error.response.status;
-                    })
-                    .then(() => {
+                    }
+                    finally {
                         this.loading = false;
-                    });
+                    }
+                })();
             },
             errorsFor(field){
                 return this.hasErrors && this.errors[field] ? this.errors[field] : null;
