@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-8 mb-md-3">
                 <div v-if="this.loading">Loading...</div>
-                <div v-else class="card">
+                <div v-else class="card mb-4">
                     <div class="card-header">
                         <h5 class="mb-0">{{ item.name }}</h5>
                     </div>
