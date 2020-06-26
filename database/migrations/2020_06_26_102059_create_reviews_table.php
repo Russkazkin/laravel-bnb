@@ -14,7 +14,11 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->unsignedTinyInteger('rating');
+            $table->text('content');
+            $table->foreignId('bookable_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('booking_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,11 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
+        Schema::table('reviews', function (Blueprint $table){
+            $table->dropForeign(['bookable_id']);
+            $table->dropForeign(['booking_id']);
+        });
+
         Schema::dropIfExists('reviews');
     }
 }
