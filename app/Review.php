@@ -21,7 +21,7 @@ class Review extends Model
         return $this->belongsTo(Bookable::class);
     }
 
-    public function booking
+    public function booking()
     {
         return $this->belongsTo(Booking::class);
     }
