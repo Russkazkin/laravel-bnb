@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->unsignedTinyInteger('rating');
             $table->text('content');
             $table->foreignId('bookable_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
-            $table->foreignId('booking_id')->constrained()->onDelete('restrict')->onUpdate('cascade');
+            $table->foreignId('booking_id')->nullable()->constrained()->onDelete('restrict')->onUpdate('cascade');
             $table->timestamps();
         });
     }

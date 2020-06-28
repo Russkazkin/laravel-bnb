@@ -2,11 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Review;
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Review::class, function (Faker $faker) {
     return [
-        //
+        'id' => Str::uuid(),
+        'content' => $faker->sentences(5, true),
+        'rating' => $faker->numberBetween(1, 5),
     ];
 });
