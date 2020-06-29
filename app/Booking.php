@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property-read \App\Bookable $bookable
+ * @property-read \App\Review|null $review
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking betweenDates($from, $to)
  */
 class Booking extends Model
 {
