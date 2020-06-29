@@ -16,6 +16,6 @@ class BookableReviewController extends Controller
      */
     public function __invoke(Bookable $bookable)
     {
-        return $bookable->reviews;
+        return $bookable->reviews()->latest()->get();
     }
 }
