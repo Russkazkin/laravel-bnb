@@ -2220,12 +2220,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ReviewList",
   props: {
@@ -60967,19 +60961,7 @@ var render = function() {
     _c(
       "h6",
       { staticClass: "text-uppercase text-secondary font-weight-bolder" },
-      [
-        _vm._v("\n        Review List\n        "),
-        _c("star-rating", { attrs: { rating: 4.4 } }),
-        _vm._v(" "),
-        _c("star-rating", { attrs: { rating: 4.9 } }),
-        _vm._v(" "),
-        _c("star-rating", { attrs: { rating: 0.9 } }),
-        _vm._v(" "),
-        _c("star-rating", { attrs: { rating: 3.3 } }),
-        _vm._v(" "),
-        _c("star-rating", { attrs: { rating: 2.5 } })
-      ],
-      1
+      [_vm._v("\n        Review List\n    ")]
     ),
     _vm._v(" "),
     _vm.loading
@@ -60994,38 +60976,47 @@ var render = function() {
                 staticClass: "border-bottom pb-3 mb-3 d-none d-md-block"
               },
               [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-md-6" }, [
-                    _vm._v(
-                      "\n                    Rus Skazkin\n                "
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "d-flex justify-content-between align-items-center"
+                  },
+                  [
+                    _c("div", [
+                      _vm._v(
+                        "\n                    Rus Skazkin\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "text-uppercase" },
+                      [
+                        _c("star-rating", {
+                          staticClass: "fa-sm",
+                          attrs: { rating: review.rating }
+                        })
+                      ],
+                      1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "col-md-6 text-uppercase d-flex justify-content-end"
-                    },
-                    [_c("star-rating", { attrs: { rating: review.rating } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-12" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(_vm._f("fromNow")(review.created_at)) +
-                        "\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-12" }, [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(review.content) +
-                        "\n                "
-                    )
-                  ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(_vm._f("fromNow")(review.created_at)) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(review.content) +
+                      "\n            "
+                  )
                 ])
               ]
             )
