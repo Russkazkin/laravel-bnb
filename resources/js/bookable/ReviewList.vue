@@ -12,6 +12,7 @@
                     </div>
                     <div class="col-md-6 text-uppercase d-flex justify-content-end">
                         {{ review.rating }}
+                        <star-rating></star-rating>
                     </div>
                     <div class="col-md-12">
                         {{ review.created_at | fromNow }}
