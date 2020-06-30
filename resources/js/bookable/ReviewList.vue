@@ -14,7 +14,7 @@
                         {{ review.rating }}
                     </div>
                     <div class="col-md-12">
-                        {{ review.created_at }}
+                        {{ review.created_at | fromNow }}
                     </div>
                     <div class="col-md-12">
                         {{ review.content }}
