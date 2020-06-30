@@ -2220,6 +2220,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ReviewList",
   props: {
@@ -2394,13 +2400,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     halfStar: function halfStar() {
-      return true;
+      if (this.rating > 0 && this.rating < 1) {
+        return true;
+      }
+
+      return this.rating % this.fullStars;
     },
     fullStars: function fullStars() {
-      return 3;
+      return Math.floor(this.rating);
     },
     emptyStars: function emptyStars() {
-      return 1;
+      return this.halfStar ? 4 - this.fullStars : 5 - this.fullStars;
     }
   }
 });
@@ -60957,7 +60967,19 @@ var render = function() {
     _c(
       "h6",
       { staticClass: "text-uppercase text-secondary font-weight-bolder" },
-      [_vm._v("\n        Review List\n    ")]
+      [
+        _vm._v("\n        Review List\n        "),
+        _c("star-rating", { attrs: { rating: 4.4 } }),
+        _vm._v(" "),
+        _c("star-rating", { attrs: { rating: 4.9 } }),
+        _vm._v(" "),
+        _c("star-rating", { attrs: { rating: 0.9 } }),
+        _vm._v(" "),
+        _c("star-rating", { attrs: { rating: 3.3 } }),
+        _vm._v(" "),
+        _c("star-rating", { attrs: { rating: 2.5 } })
+      ],
+      1
     ),
     _vm._v(" "),
     _vm.loading
@@ -60985,7 +61007,7 @@ var render = function() {
                       staticClass:
                         "col-md-6 text-uppercase d-flex justify-content-end"
                     },
-                    [_c("star-rating")],
+                    [_c("star-rating", { attrs: { rating: review.rating } })],
                     1
                   ),
                   _vm._v(" "),

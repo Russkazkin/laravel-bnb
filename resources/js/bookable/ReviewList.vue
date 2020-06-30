@@ -2,6 +2,12 @@
     <div class="reviews-wrap">
         <h6 class="text-uppercase text-secondary font-weight-bolder">
             Review List
+            <star-rating :rating=4.4></star-rating>
+            <star-rating :rating=4.9></star-rating>
+            <star-rating :rating=0.9></star-rating>
+            <star-rating :rating=3.3></star-rating>
+            <star-rating :rating=2.5></star-rating>
+
         </h6>
         <div v-if="loading">Loading...</div>
         <div v-else>
@@ -11,7 +17,7 @@
                         Rus Skazkin
                     </div>
                     <div class="col-md-6 text-uppercase d-flex justify-content-end">
-                        <star-rating></star-rating>
+                        <star-rating :rating="review.rating"></star-rating>
                     </div>
                     <div class="col-md-12">
                         {{ review.created_at | fromNow }}

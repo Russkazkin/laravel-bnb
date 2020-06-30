@@ -14,13 +14,16 @@
         },
         computed: {
             halfStar() {
-                return true;
+                if(this.rating > 0 && this.rating < 1) {
+                    return true;
+                }
+                return this.rating % this.fullStars;
             },
             fullStars() {
-                return 3;
+                return Math.floor(this.rating);
             },
             emptyStars() {
-                return 1;
+                return this.halfStar ? 4 - this.fullStars : 5 - this.fullStars;
             },
         },
     }
