@@ -11,7 +11,6 @@
                         Rus Skazkin
                     </div>
                     <div class="col-md-6 text-uppercase d-flex justify-content-end">
-                        {{ review.rating }}
                         <star-rating></star-rating>
                     </div>
                     <div class="col-md-12">
@@ -45,7 +44,6 @@
                 try {
                     const response = await axios.get(`/api/bookables/${this.bookableId}/reviews`);
                     this.reviews = response.data.data;
-                    console.log(response)
                 } catch (e) {
                     console.log(e.response);
                 } finally {

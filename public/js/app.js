@@ -2220,7 +2220,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ReviewList",
   props: {
@@ -2250,26 +2249,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context.sent;
               _this.reviews = response.data.data;
-              console.log(response);
-              _context.next = 11;
+              _context.next = 10;
               break;
 
-            case 8:
-              _context.prev = 8;
+            case 7:
+              _context.prev = 7;
               _context.t0 = _context["catch"](0);
               console.log(_context.t0.response);
 
-            case 11:
-              _context.prev = 11;
+            case 10:
+              _context.prev = 10;
               _this.loading = false;
-              return _context.finish(11);
+              return _context.finish(10);
 
-            case 14:
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 8, 11, 14]]);
+      }, _callee, null, [[0, 7, 10, 13]]);
     }))();
   }
 });
@@ -2387,8 +2385,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "StarRating"
+  name: "StarRating",
+  props: {
+    rating: Number
+  },
+  computed: {
+    halfStar: function halfStar() {
+      return true;
+    },
+    fullStars: function fullStars() {
+      return 3;
+    },
+    emptyStars: function emptyStars() {
+      return 1;
+    }
+  }
 });
 
 /***/ }),
@@ -60971,14 +60985,7 @@ var render = function() {
                       staticClass:
                         "col-md-6 text-uppercase d-flex justify-content-end"
                     },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(review.rating) +
-                          "\n                    "
-                      ),
-                      _c("star-rating")
-                    ],
+                    [_c("star-rating")],
                     1
                   ),
                   _vm._v(" "),
@@ -61140,7 +61147,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    it works!\n")])
+  return _c(
+    "div",
+    { staticClass: "d-flex" },
+    [
+      _vm._l(_vm.fullStars, function(star) {
+        return _c("i", { key: "full" + star, staticClass: "fas fa-star" })
+      }),
+      _vm._v(" "),
+      _vm.halfStar
+        ? _c("i", { staticClass: "fas fa-star-half-alt" })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.emptyStars, function(star) {
+        return _c("i", { key: "empty" + star, staticClass: "far fa-star" })
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
