@@ -2383,6 +2383,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review"
 });
@@ -61179,9 +61194,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("Review Page")])
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c(
+          "div",
+          { staticClass: "form-group" },
+          [
+            _c("label", { staticClass: "text-muted", attrs: { for: "" } }, [
+              _vm._v("Please rate your booking")
+            ]),
+            _vm._v(" "),
+            _c("star-rating", { staticClass: "fa-2x", attrs: { rating: 5 } })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _vm._m(0),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { staticClass: "text-muted", attrs: { for: "content" } }, [
+        _vm._v("And add review if you wish")
+      ]),
+      _vm._v(" "),
+      _c("textarea", {
+        staticClass: "form-control",
+        attrs: { name: "content", id: "content", cols: "5", rows: "5" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
