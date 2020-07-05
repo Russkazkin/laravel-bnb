@@ -3,13 +3,13 @@
     <i class="fas fa-star"
        v-for="star in fullStars"
        :key="'full' + star"
-       @click="$emit('ratingChanged', star)">
+       @click="$emit('input', star)">
     </i>
     <i class="fas fa-star-half-alt" v-if="halfStar"></i>
     <i class="far fa-star"
        v-for="star in emptyStars"
        :key="'empty' + star"
-       @click="$emit('ratingChanged', fullStars + star)">
+       @click="$emit('input', fullStars + star)">
     </i>
 </div>
 </template>
@@ -18,17 +18,17 @@
     export default {
         name: "StarRating",
         props: {
-            rating: Number,
+            value: Number,
         },
         computed: {
             halfStar() {
-                if(this.rating > 0 && this.rating < 1) {
+                if(this.value > 0 && this.value < 1) {
                     return true;
                 }
-                return this.rating % this.fullStars;
+                return this.value % this.fullStars;
             },
             fullStars() {
-                return Math.floor(this.rating);
+                return Math.floor(this.value);
             },
             emptyStars() {
                 return this.halfStar ? 4 - this.fullStars : 5 - this.fullStars;

@@ -4,9 +4,8 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="" class="text-muted">Please rate your booking</label>
-                    <star-rating :rating="review.rating"
-                                 class="fa-2x"
-                                 @ratingChanged="review.rating = $event">
+                    <star-rating v-model="review.rating"
+                                 class="fa-2x">
                     </star-rating>
                 </div>
                 <div class="form-group">
