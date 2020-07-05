@@ -2398,8 +2398,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Review"
+  name: "Review",
+  data: function data() {
+    return {
+      review: {
+        rating: 5,
+        content: ''
+      }
+    };
+  }
 });
 
 /***/ }),
@@ -2413,6 +2424,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -61205,7 +61224,15 @@ var render = function() {
               _vm._v("Please rate your booking")
             ]),
             _vm._v(" "),
-            _c("star-rating", { staticClass: "fa-2x", attrs: { rating: 5 } })
+            _c("star-rating", {
+              staticClass: "fa-2x",
+              attrs: { rating: _vm.review.rating },
+              on: {
+                ratingChanged: function($event) {
+                  _vm.review.rating = $event
+                }
+              }
+            })
           ],
           1
         ),
@@ -61260,7 +61287,15 @@ var render = function() {
     { staticClass: "d-flex" },
     [
       _vm._l(_vm.fullStars, function(star) {
-        return _c("i", { key: "full" + star, staticClass: "fas fa-star" })
+        return _c("i", {
+          key: "full" + star,
+          staticClass: "fas fa-star",
+          on: {
+            click: function($event) {
+              return _vm.$emit("ratingChanged", star)
+            }
+          }
+        })
       }),
       _vm._v(" "),
       _vm.halfStar
@@ -61268,7 +61303,15 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.emptyStars, function(star) {
-        return _c("i", { key: "empty" + star, staticClass: "far fa-star" })
+        return _c("i", {
+          key: "empty" + star,
+          staticClass: "far fa-star",
+          on: {
+            click: function($event) {
+              return _vm.$emit("ratingChanged", _vm.fullStars + star)
+            }
+          }
+        })
       })
     ],
     2

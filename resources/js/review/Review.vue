@@ -4,7 +4,10 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="" class="text-muted">Please rate your booking</label>
-                    <star-rating :rating="5" class="fa-2x"></star-rating>
+                    <star-rating :rating="review.rating"
+                                 class="fa-2x"
+                                 @ratingChanged="review.rating = $event">
+                    </star-rating>
                 </div>
                 <div class="form-group">
                     <label for="content" class="text-muted">And add review if you wish</label>
@@ -19,7 +22,15 @@
 
 <script>
     export default {
-        name: "Review"
+        name: "Review",
+        data() {
+            return {
+                review: {
+                    rating: 5,
+                    content: '',
+                }
+            }
+        },
     }
 </script>
 
