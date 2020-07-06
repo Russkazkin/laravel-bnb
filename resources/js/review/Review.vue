@@ -10,7 +10,11 @@
                 </div>
                 <div class="form-group">
                     <label for="content" class="text-muted">And add review if you wish</label>
-                    <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
+                    <textarea name="content"
+                              id="content"
+                              cols="5" rows="5"
+                              class="form-control" v-model="review.content">
+                    </textarea>
                 </div>
                 <button class="btn btn-primary">Submit</button>
             </div>
@@ -29,6 +33,9 @@
                     content: '',
                 }
             }
+        },
+        created() {
+
         },
     }
 </script>

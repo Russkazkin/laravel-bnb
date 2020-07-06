@@ -2400,6 +2400,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -2409,7 +2413,8 @@ __webpack_require__.r(__webpack_exports__);
         content: ''
       }
     };
-  }
+  },
+  created: function created() {}
 });
 
 /***/ }),
@@ -61237,30 +61242,42 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm._m(0),
+        _c("div", { staticClass: "form-group" }, [
+          _c(
+            "label",
+            { staticClass: "text-muted", attrs: { for: "content" } },
+            [_vm._v("And add review if you wish")]
+          ),
+          _vm._v(" "),
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.review.content,
+                expression: "review.content"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "content", id: "content", cols: "5", rows: "5" },
+            domProps: { value: _vm.review.content },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.review, "content", $event.target.value)
+              }
+            }
+          })
+        ]),
         _vm._v(" "),
         _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { staticClass: "text-muted", attrs: { for: "content" } }, [
-        _vm._v("And add review if you wish")
-      ]),
-      _vm._v(" "),
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { name: "content", id: "content", cols: "5", rows: "5" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
