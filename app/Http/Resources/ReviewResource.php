@@ -15,7 +15,7 @@ class ReviewResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'created_ad' => $this->created_at
+            'created_at' => $this->created_at
         ];
     }
 }

@@ -31,11 +31,24 @@
                 review: {
                     rating: 5,
                     content: '',
+                    date: null,
                 }
             }
         },
         created() {
-
+            (async () => {
+                try {
+                    const response = await axios.get(`/api/reviews/${this.$route.params.id}`);
+                    this.review.date = response.data.data;
+                } catch (e) {
+                    console.log(e.response);
+                }
+            })();
+        },
+        computed: {
+            alreadyReviewed() {
+                return this.review.date !== null;
+            }
         },
     }
 </script>
