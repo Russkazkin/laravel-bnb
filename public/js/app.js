@@ -2412,6 +2412,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -61263,63 +61266,69 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "div",
-          { staticClass: "form-group" },
-          [
-            _c("label", { staticClass: "text-muted", attrs: { for: "" } }, [
-              _vm._v("Please rate your booking")
+    _vm.alreadyReviewed
+      ? _c("div", { staticClass: "alert alert-warning" }, [
+          _vm._v(
+            "\n        You've already left a review for this booking!\n    "
+          )
+        ])
+      : _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { staticClass: "text-muted", attrs: { for: "" } }, [
+                  _vm._v("Please rate your booking")
+                ]),
+                _vm._v(" "),
+                _c("star-rating", {
+                  staticClass: "fa-2x",
+                  model: {
+                    value: _vm.review.rating,
+                    callback: function($$v) {
+                      _vm.$set(_vm.review, "rating", $$v)
+                    },
+                    expression: "review.rating"
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                { staticClass: "text-muted", attrs: { for: "content" } },
+                [_vm._v("And add review if you wish")]
+              ),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.review.content,
+                    expression: "review.content"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { name: "content", id: "content", cols: "5", rows: "5" },
+                domProps: { value: _vm.review.content },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.review, "content", $event.target.value)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("star-rating", {
-              staticClass: "fa-2x",
-              model: {
-                value: _vm.review.rating,
-                callback: function($$v) {
-                  _vm.$set(_vm.review, "rating", $$v)
-                },
-                expression: "review.rating"
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c(
-            "label",
-            { staticClass: "text-muted", attrs: { for: "content" } },
-            [_vm._v("And add review if you wish")]
-          ),
-          _vm._v(" "),
-          _c("textarea", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.review.content,
-                expression: "review.content"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { name: "content", id: "content", cols: "5", rows: "5" },
-            domProps: { value: _vm.review.content },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.review, "content", $event.target.value)
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
-      ])
-    ])
+            _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
+          ])
+        ])
   ])
 }
 var staticRenderFns = []

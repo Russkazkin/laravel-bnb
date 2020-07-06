@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div v-if="alreadyReviewed" class="alert alert-warning">
+            You've already left a review for this booking!
+        </div>
+        <div v-else class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="" class="text-muted">Please rate your booking</label>
