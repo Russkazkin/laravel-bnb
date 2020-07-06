@@ -2415,6 +2415,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -2423,11 +2424,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         rating: 5,
         content: '',
         date: null
-      }
+      },
+      lading: false
     };
   },
   created: function created() {
     var _this = this;
+
+    this.loading = true;
 
     _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var response;
@@ -2451,11 +2455,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               console.log(_context.t0.response);
 
             case 10:
+              _context.prev = 10;
+              _this.loading = false;
+              return _context.finish(10);
+
+            case 13:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee, null, [[0, 7, 10, 13]]);
     }))();
   },
   computed: {
@@ -61266,7 +61275,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm.alreadyReviewed
+    _vm.lading
+      ? _c("div", [_vm._v("Loading")])
+      : _vm.alreadyReviewed
       ? _c("div", { staticClass: "alert alert-warning" }, [
           _vm._v(
             "\n        You've already left a review for this booking!\n    "
