@@ -2425,7 +2425,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         content: '',
         date: null
       },
-      lading: false
+      lading: false,
+      booking: null
     };
   },
   created: function created() {
@@ -2433,38 +2434,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     this.loading = true;
 
-    _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+    _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
       var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
         while (1) {
-          switch (_context.prev = _context.next) {
+          switch (_context2.prev = _context2.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
+              _context2.prev = 0;
+              _context2.next = 3;
               return axios.get("/api/reviews/".concat(_this.$route.params.id));
 
             case 3:
-              response = _context.sent;
+              response = _context2.sent;
               _this.review.date = response.data.data;
-              _context.next = 10;
+              _context2.next = 13;
               break;
 
             case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-              console.log(_context.t0.response);
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
 
-            case 10:
-              _context.prev = 10;
-              _this.loading = false;
-              return _context.finish(10);
+              if (!(_context2.t0.response && _context2.t0.response.status && _context2.t0.response.status === 404)) {
+                _context2.next = 12;
+                break;
+              }
+
+              _context2.next = 12;
+              return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+                var res;
+                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+                  while (1) {
+                    switch (_context.prev = _context.next) {
+                      case 0:
+                        _context.prev = 0;
+                        _context.next = 3;
+                        return axios.get("/api/booking-by-review/".concat(_this.$route.params.id));
+
+                      case 3:
+                        res = _context.sent;
+                        _this.booking = res.data.data;
+                        _context.next = 10;
+                        break;
+
+                      case 7:
+                        _context.prev = 7;
+                        _context.t0 = _context["catch"](0);
+                        console.log(_context.t0.response);
+
+                      case 10:
+                      case "end":
+                        return _context.stop();
+                    }
+                  }
+                }, _callee, null, [[0, 7]]);
+              }))();
+
+            case 12:
+              console.log(_context2.t0.response);
 
             case 13:
+              _context2.prev = 13;
+              _this.loading = false;
+              return _context2.finish(13);
+
+            case 16:
             case "end":
-              return _context.stop();
+              return _context2.stop();
           }
         }
-      }, _callee, null, [[0, 7, 10, 13]]);
+      }, _callee2, null, [[0, 7, 13, 16]]);
     }))();
   },
   computed: {

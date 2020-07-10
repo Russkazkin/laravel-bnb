@@ -38,6 +38,7 @@
                     date: null,
                 },
                 lading: false,
+                booking: null,
             }
         },
         created() {
@@ -47,6 +48,16 @@
                     const response = await axios.get(`/api/reviews/${this.$route.params.id}`);
                     this.review.date = response.data.data;
                 } catch (e) {
+                    if (e.response && e.response.status && e.response.status === 404) {
+                        await (async () => {
+                            try {
+                                const res = await axios.get(`/api/booking-by-review/${this.$route.params.id}`);
+                                this.booking = res.data.data;
+                            } catch (e) {
+                                console.log(e.response);
+                            }
+                        })();
+                    }
                     console.log(e.response);
                 } finally {
                     this.loading = false;
