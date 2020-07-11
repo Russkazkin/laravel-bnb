@@ -2416,6 +2416,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -2494,20 +2495,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 13:
               _context2.prev = 13;
+              console.log('final');
               _this.loading = false;
               return _context2.finish(13);
 
-            case 16:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 7, 13, 16]]);
+      }, _callee2, null, [[0, 7, 13, 17]]);
     }))();
   },
   computed: {
     alreadyReviewed: function alreadyReviewed() {
+      return this.hasReview || !this.booking;
+    },
+    hasReview: function hasReview() {
       return this.review.date !== null;
+    },
+    hasBooking: function hasBooking() {
+      return this.booking !== null;
     }
   }
 });
@@ -61315,68 +61323,79 @@ var render = function() {
   return _c("div", { staticClass: "container" }, [
     _vm.lading
       ? _c("div", [_vm._v("Loading")])
-      : _vm.alreadyReviewed
-      ? _c("div", { staticClass: "alert alert-warning" }, [
-          _vm._v(
-            "\n        You've already left a review for this booking!\n    "
-          )
-        ])
-      : _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c("label", { staticClass: "text-muted", attrs: { for: "" } }, [
-                  _vm._v("Please rate your booking")
-                ]),
-                _vm._v(" "),
-                _c("star-rating", {
-                  staticClass: "fa-2x",
-                  model: {
-                    value: _vm.review.rating,
-                    callback: function($$v) {
-                      _vm.$set(_vm.review, "rating", $$v)
-                    },
-                    expression: "review.rating"
-                  }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c(
-                "label",
-                { staticClass: "text-muted", attrs: { for: "content" } },
-                [_vm._v("And add review if you wish")]
-              ),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.review.content,
-                    expression: "review.content"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { name: "content", id: "content", cols: "5", rows: "5" },
-                domProps: { value: _vm.review.content },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.review, "content", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
-          ])
+      : _c("div", [
+          _vm.alreadyReviewed
+            ? _c("div", { staticClass: "alert alert-warning" }, [
+                _vm._v(
+                  "\n            You've already left a review for this booking!\n        "
+                )
+              ])
+            : _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _c(
+                        "label",
+                        { staticClass: "text-muted", attrs: { for: "" } },
+                        [_vm._v("Please rate your booking")]
+                      ),
+                      _vm._v(" "),
+                      _c("star-rating", {
+                        staticClass: "fa-2x",
+                        model: {
+                          value: _vm.review.rating,
+                          callback: function($$v) {
+                            _vm.$set(_vm.review, "rating", $$v)
+                          },
+                          expression: "review.rating"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c(
+                      "label",
+                      { staticClass: "text-muted", attrs: { for: "content" } },
+                      [_vm._v("And add review if you wish")]
+                    ),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.review.content,
+                          expression: "review.content"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        name: "content",
+                        id: "content",
+                        cols: "5",
+                        rows: "5"
+                      },
+                      domProps: { value: _vm.review.content },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.review, "content", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("button", { staticClass: "btn btn-primary" }, [
+                    _vm._v("Submit")
+                  ])
+                ])
+              ])
         ])
   ])
 }
