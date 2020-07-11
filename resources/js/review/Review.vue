@@ -2,7 +2,22 @@
     <div class="container">
         <div class="row">
             <div :class="[{'col-md-4' : loading || !alreadyReviewed}, {'d-none' : !loading && alreadyReviewed}]">
-                First column
+                <div class="card">
+                    <div class="card-body">
+                        <div v-if="loading">Loading</div>
+                        <div v-else>
+                            <p>
+                                Stayed at
+                                <router-link :to="{name: 'bookable', params: {id: booking.bookable.id}}">
+                                    {{ booking.bookable.title }}
+                                </router-link>
+                            </p>
+                            <p>
+                                From {{ booking.from }} to {{ booking.to }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div :class="[{'col-md-8' : loading || !alreadyReviewed}, {'col-md-12' : !loading && alreadyReviewed}]">
                 <div v-if="loading">Loading</div>
@@ -68,7 +83,6 @@
                     }
                     console.log(e.response);
                 } finally {
-                    console.log('final');
                     this.loading = false;
                 }
             })();

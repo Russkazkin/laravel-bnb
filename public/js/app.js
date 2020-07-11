@@ -2424,6 +2424,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -2502,16 +2517,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 13:
               _context2.prev = 13;
-              console.log('final');
               _this.loading = false;
               return _context2.finish(13);
 
-            case 17:
+            case 16:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 7, 13, 17]]);
+      }, _callee2, null, [[0, 7, 13, 16]]);
     }))();
   },
   computed: {
@@ -61337,7 +61351,53 @@ var render = function() {
             { "d-none": !_vm.loading && _vm.alreadyReviewed }
           ]
         },
-        [_vm._v("\n            First column\n        ")]
+        [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _vm.loading
+                ? _c("div", [_vm._v("Loading")])
+                : _c("div", [
+                    _c(
+                      "p",
+                      [
+                        _vm._v(
+                          "\n                            Stayed at\n                            "
+                        ),
+                        _c(
+                          "router-link",
+                          {
+                            attrs: {
+                              to: {
+                                name: "bookable",
+                                params: { id: _vm.booking.bookable.id }
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(_vm.booking.bookable.title) +
+                                "\n                            "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n                            From " +
+                          _vm._s(_vm.booking.from) +
+                          " to " +
+                          _vm._s(_vm.booking.to) +
+                          "\n                        "
+                      )
+                    ])
+                  ])
+            ])
+          ])
+        ]
       ),
       _vm._v(" "),
       _c(
