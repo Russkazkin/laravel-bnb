@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div v-if="loading">Loading</div>
-                        <div v-else>
+                        <div v-else-if="!alreadyReviewed">
                             <p>
                                 Stayed at
                                 <router-link :to="{name: 'bookable', params: {id: booking.bookable.id}}">
@@ -25,7 +25,7 @@
                     <div v-if="alreadyReviewed" class="alert alert-warning">
                         You've already left a review for this booking!
                     </div>
-                    <div>
+                    <div v-else>
                         <div class="form-group">
                             <label for="" class="text-muted">Please rate your booking</label>
                             <star-rating v-model="review.rating"

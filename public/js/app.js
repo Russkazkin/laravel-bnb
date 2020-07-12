@@ -61354,7 +61354,8 @@ var render = function() {
             _c("div", { staticClass: "card-body" }, [
               _vm.loading
                 ? _c("div", [_vm._v("Loading")])
-                : _c("div", [
+                : !_vm.alreadyReviewed
+                ? _c("div", [
                     _c(
                       "p",
                       [
@@ -61393,6 +61394,7 @@ var render = function() {
                       )
                     ])
                   ])
+                : _vm._e()
             ])
           ])
         ]
@@ -61416,72 +61418,77 @@ var render = function() {
                         "\n                    You've already left a review for this booking!\n                "
                       )
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
+                  : _c("div", [
                       _c(
-                        "label",
-                        { staticClass: "text-muted", attrs: { for: "" } },
-                        [_vm._v("Please rate your booking")]
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c(
+                            "label",
+                            { staticClass: "text-muted", attrs: { for: "" } },
+                            [_vm._v("Please rate your booking")]
+                          ),
+                          _vm._v(" "),
+                          _c("star-rating", {
+                            staticClass: "fa-2x",
+                            model: {
+                              value: _vm.review.rating,
+                              callback: function($$v) {
+                                _vm.$set(_vm.review, "rating", $$v)
+                              },
+                              expression: "review.rating"
+                            }
+                          })
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      _c("star-rating", {
-                        staticClass: "fa-2x",
-                        model: {
-                          value: _vm.review.rating,
-                          callback: function($$v) {
-                            _vm.$set(_vm.review, "rating", $$v)
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "text-muted",
+                            attrs: { for: "content" }
                           },
-                          expression: "review.rating"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c(
-                      "label",
-                      { staticClass: "text-muted", attrs: { for: "content" } },
-                      [_vm._v("And add review if you wish")]
-                    ),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.review.content,
-                          expression: "review.content"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        name: "content",
-                        id: "content",
-                        cols: "5",
-                        rows: "5"
-                      },
-                      domProps: { value: _vm.review.content },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                          [_vm._v("And add review if you wish")]
+                        ),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.review.content,
+                              expression: "review.content"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "content",
+                            id: "content",
+                            cols: "5",
+                            rows: "5"
+                          },
+                          domProps: { value: _vm.review.content },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.review,
+                                "content",
+                                $event.target.value
+                              )
+                            }
                           }
-                          _vm.$set(_vm.review, "content", $event.target.value)
-                        }
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Submit")
-                  ])
-                ])
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("button", { staticClass: "btn btn-primary" }, [
+                        _vm._v("Submit")
+                      ])
+                    ])
               ])
         ]
       )
