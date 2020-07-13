@@ -13,4 +13,9 @@ class ReviewController extends Controller
     {
         return new ReviewResource($review);
     }
+
+    public function store(Request $request)
+    {
+
+    }
 }
