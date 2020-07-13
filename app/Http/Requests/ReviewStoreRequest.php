@@ -24,7 +24,7 @@ class ReviewStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|size:36',
+            'id' => 'required|size:36|unique:reviews',
             'content' => 'required|min:2',
             'rating' => 'required|digits_between:1,5'
         ];

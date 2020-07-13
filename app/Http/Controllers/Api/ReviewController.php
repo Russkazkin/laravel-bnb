@@ -17,6 +17,8 @@ class ReviewController extends Controller
 
     public function store(ReviewStoreRequest $request)
     {
+        $data = $request->only(['id', 'content', 'rating']);
+
         $booking = Booking::findByReviewKey($request['id']);
 
         if ($booking === null) {
@@ -26,10 +28,9 @@ class ReviewController extends Controller
         $booking->review_key = '';
         $booking->save();
 
-        $review = Review::make($request);
+        $review = Review::make($data);
         $review->booking_id = $booking->id;
         $review->bookable_id = $booking->bookable_id;
-
         $review->save();
 
         return new ReviewResource($review);
