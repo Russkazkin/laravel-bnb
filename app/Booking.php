@@ -29,6 +29,8 @@ use Illuminate\Support\Str;
  * @property-read \App\Bookable $bookable
  * @property-read \App\Review|null $review
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking betweenDates($from, $to)
+ * @property string $review_key
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereReviewKey($value)
  */
 class Booking extends Model
 {

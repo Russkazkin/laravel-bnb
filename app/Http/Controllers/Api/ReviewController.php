@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Booking;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ReviewStoreRequest;
 use App\Http\Resources\ReviewResource;
@@ -16,6 +17,21 @@ class ReviewController extends Controller
 
     public function store(ReviewStoreRequest $request)
     {
+        $booking = Booking::findByReviewKey($request['id']);
 
+        if ($booking === null) {
+            return abort(404);
+        }
+
+        $booking->review_key = '';
+        $booking->save();
+
+        $review = Review::make($request);
+        $review->booking_id = $booking->id;
+        $review->bookable_id = $booking->bookable_id;
+
+        $review->save();
+
+        return new ReviewResource($review);
     }
 }
