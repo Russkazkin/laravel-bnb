@@ -11,7 +11,7 @@
                         Rus Skazkin
                     </div>
                     <div class="text-uppercase">
-                        <star-rating :rating="review.rating" class="fa-sm"></star-rating>
+                        <star-rating :value="review.rating" class="fa-sm"></star-rating>
                     </div>
                 </div>
                 <div>
