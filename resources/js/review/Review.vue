@@ -29,21 +29,23 @@
                         You've already left a review for this booking!
                     </div>
                     <div v-else>
-                        <div class="form-group">
-                            <label for="" class="text-muted">Please rate your booking</label>
-                            <star-rating v-model="review.rating"
-                                         class="fa-2x">
-                            </star-rating>
-                        </div>
-                        <div class="form-group">
-                            <label for="content" class="text-muted">And add review if you wish</label>
-                            <textarea name="content"
-                                      id="content"
-                                      cols="5" rows="5"
-                                      class="form-control" v-model="review.content">
-                            </textarea>
-                        </div>
-                        <button class="btn btn-primary">Submit</button>
+                        <form @submit.prevent="submit">
+                            <div class="form-group">
+                                <label for="" class="text-muted">Please rate your booking</label>
+                                <star-rating v-model="review.rating"
+                                             class="fa-2x">
+                                </star-rating>
+                            </div>
+                            <div class="form-group">
+                                <label for="content" class="text-muted">And add review if you wish</label>
+                                <textarea name="content"
+                                          id="content"
+                                          cols="5" rows="5"
+                                          class="form-control" v-model="review.content">
+                                </textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" :disabled="loading">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -111,6 +113,22 @@
                 return this.loading || !this.alreadyReviewed;
             },
         },
+        methods: {
+            submit() {
+                this.loading = true;
+                (async () => {
+                    try {
+                        const response = await axios.post(`/api/reviews`, this.review);
+                        console.log(response);
+                    } catch (e) {
+                        this.error = true;
+                        console.log(e.response);
+                    } finally {
+                        this.loading = false;
+                    }
+                })();
+            }
+        }
     }
 </script>
 
