@@ -75,12 +75,13 @@
                     this.review.date = response.data.data;
                 } catch (e) {
                     if (is404(e)) {
-                        await (async () => {
+                        return await (async () => {
                             try {
                                 const res = await axios.get(`/api/booking-by-review/${this.$route.params.id}`);
                                 this.booking = res.data.data;
                             } catch (e) {
                                 this.error = !is404(e);
+                                console.log('here');
                             }
                         })();
                     }

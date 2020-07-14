@@ -2474,7 +2474,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context2.sent;
               _this.review.date = response.data.data;
-              _context2.next = 14;
+              _context2.next = 15;
               break;
 
             case 7:
@@ -2482,7 +2482,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context2.t0 = _context2["catch"](0);
 
               if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context2.t0)) {
-                _context2.next = 12;
+                _context2.next = 13;
                 break;
               }
 
@@ -2500,15 +2500,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       case 3:
                         res = _context.sent;
                         _this.booking = res.data.data;
-                        _context.next = 10;
+                        _context.next = 11;
                         break;
 
                       case 7:
                         _context.prev = 7;
                         _context.t0 = _context["catch"](0);
                         _this.error = !Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0);
+                        console.log('here');
 
-                      case 10:
+                      case 11:
                       case "end":
                         return _context.stop();
                     }
@@ -2517,20 +2518,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }))();
 
             case 12:
+              return _context2.abrupt("return", _context2.sent);
+
+            case 13:
               _this.error = true;
               console.log(_context2.t0.response);
 
-            case 14:
-              _context2.prev = 14;
+            case 15:
+              _context2.prev = 15;
               _this.loading = false;
-              return _context2.finish(14);
+              return _context2.finish(15);
 
-            case 17:
+            case 18:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 7, 14, 17]]);
+      }, _callee2, null, [[0, 7, 15, 18]]);
     }))();
   },
   computed: {
