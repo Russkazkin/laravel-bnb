@@ -2535,6 +2535,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     hasBooking: function hasBooking() {
       return this.booking !== null;
+    },
+    oneColumn: function oneColumn() {
+      return !this.loading && this.alreadyReviewed;
+    },
+    twoColumns: function twoColumns() {
+      return this.loading || !this.alreadyReviewed;
     }
   }
 });
@@ -61344,17 +61350,14 @@ var render = function() {
       _c(
         "div",
         {
-          class: [
-            { "col-md-4": _vm.loading || !_vm.alreadyReviewed },
-            { "d-none": !_vm.loading && _vm.alreadyReviewed }
-          ]
+          class: [{ "col-md-4": _vm.twoColumns }, { "d-none": _vm.oneColumn }]
         },
         [
           _c("div", { staticClass: "card" }, [
             _c("div", { staticClass: "card-body" }, [
-              _vm.loading
-                ? _c("div", [_vm._v("Loading")])
-                : !_vm.alreadyReviewed
+              _vm.loading ? _c("div", [_vm._v("Loading")]) : _vm._e(),
+              _vm._v(" "),
+              !_vm.alreadyReviewed
                 ? _c("div", [
                     _c(
                       "p",
@@ -61404,8 +61407,8 @@ var render = function() {
         "div",
         {
           class: [
-            { "col-md-8": _vm.loading || !_vm.alreadyReviewed },
-            { "col-md-12": !_vm.loading && _vm.alreadyReviewed }
+            { "col-md-8": _vm.twoColumns },
+            { "col-md-12": _vm.oneColumn }
           ]
         },
         [

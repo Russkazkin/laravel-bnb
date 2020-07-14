@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="row">
-            <div :class="[{'col-md-4' : loading || !alreadyReviewed}, {'d-none' : !loading && alreadyReviewed}]">
+            <div :class="[{'col-md-4' : twoColumns}, {'d-none' : oneColumn}]">
                 <div class="card">
                     <div class="card-body">
                         <div v-if="loading">Loading</div>
-                        <div v-else-if="!alreadyReviewed">
+                        <div v-if="!alreadyReviewed">
                             <p>
                                 Stayed at
                                 <router-link :to="{name: 'bookable', params: {id: booking.bookable.id}}">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div :class="[{'col-md-8' : loading || !alreadyReviewed}, {'col-md-12' : !loading && alreadyReviewed}]">
+            <div :class="[{'col-md-8' : twoColumns}, {'col-md-12' : oneColumn}]">
                 <div v-if="loading">Loading</div>
                 <div v-else>
                     <div v-if="alreadyReviewed" class="alert alert-warning">
@@ -94,7 +94,13 @@
             },
             hasBooking() {
                 return this.booking !== null;
-            }
+            },
+            oneColumn() {
+                return !this.loading && this.alreadyReviewed;
+            },
+            twoColumns() {
+                return this.loading || !this.alreadyReviewed;
+            },
         },
     }
 </script>
