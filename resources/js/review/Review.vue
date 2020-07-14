@@ -1,6 +1,9 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div v-if="error" class="alert alert-danger">
+            Unknown error has occurred. Please try again later
+        </div>
+        <div v-else class="row">
             <div :class="[{'col-md-4' : twoColumns}, {'d-none' : oneColumn}]">
                 <div class="card">
                     <div class="card-body">
