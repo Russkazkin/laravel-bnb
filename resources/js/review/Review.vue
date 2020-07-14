@@ -49,6 +49,7 @@
 </template>
 
 <script>
+    import {is404} from '../shared/utils/responce';
     export default {
         name: "Review",
         data() {
@@ -60,6 +61,7 @@
                 },
                 loading: false,
                 booking: null,
+                error: false,
             }
         },
         created() {
@@ -69,16 +71,17 @@
                     const response = await axios.get(`/api/reviews/${this.$route.params.id}`);
                     this.review.date = response.data.data;
                 } catch (e) {
-                    if (e.response && e.response.status && e.response.status === 404) {
+                    if (is404(e)) {
                         await (async () => {
                             try {
                                 const res = await axios.get(`/api/booking-by-review/${this.$route.params.id}`);
                                 this.booking = res.data.data;
                             } catch (e) {
-                                console.log(e.response);
+                                this.error = !is404(e);
                             }
                         })();
                     }
+                    this.error = true;
                     console.log(e.response);
                 } finally {
                     this.loading = false;

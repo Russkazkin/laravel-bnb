@@ -2381,6 +2381,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/responce */ "./resources/js/shared/utils/responce.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2437,6 +2438,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   data: function data() {
@@ -2447,7 +2449,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         date: null
       },
       loading: false,
-      booking: null
+      booking: null,
+      error: false
     };
   },
   created: function created() {
@@ -2468,14 +2471,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               response = _context2.sent;
               _this.review.date = response.data.data;
-              _context2.next = 13;
+              _context2.next = 14;
               break;
 
             case 7:
               _context2.prev = 7;
               _context2.t0 = _context2["catch"](0);
 
-              if (!(_context2.t0.response && _context2.t0.response.status && _context2.t0.response.status === 404)) {
+              if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context2.t0)) {
                 _context2.next = 12;
                 break;
               }
@@ -2500,7 +2503,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       case 7:
                         _context.prev = 7;
                         _context.t0 = _context["catch"](0);
-                        console.log(_context.t0.response);
+                        _this.error = !Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0);
 
                       case 10:
                       case "end":
@@ -2511,19 +2514,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }))();
 
             case 12:
+              _this.error = true;
               console.log(_context2.t0.response);
 
-            case 13:
-              _context2.prev = 13;
+            case 14:
+              _context2.prev = 14;
               _this.loading = false;
-              return _context2.finish(13);
+              return _context2.finish(14);
 
-            case 16:
+            case 17:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 7, 13, 16]]);
+      }, _callee2, null, [[0, 7, 14, 17]]);
     }))();
   },
   computed: {
@@ -77447,6 +77451,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StarRating_vue_vue_type_template_id_2679dcc8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/shared/utils/responce.js":
+/*!***********************************************!*\
+  !*** ./resources/js/shared/utils/responce.js ***!
+  \***********************************************/
+/*! exports provided: is404 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "is404", function() { return is404; });
+var is404 = function is404(e) {
+  return e.response && e.response.status && e.response.status === 404;
+};
 
 /***/ }),
 
