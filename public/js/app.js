@@ -2447,6 +2447,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       review: {
+        id: null,
         rating: 5,
         content: '',
         date: null
@@ -2460,6 +2461,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this = this;
 
     this.loading = true;
+    this.review.id = this.$route.params.id;
 
     _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
       var response;
@@ -2469,7 +2471,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return axios.get("/api/reviews/".concat(_this.$route.params.id));
+              return axios.get("/api/reviews/".concat(_this.review.id));
 
             case 3:
               response = _context2.sent;
@@ -2495,7 +2497,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       case 0:
                         _context.prev = 0;
                         _context.next = 3;
-                        return axios.get("/api/booking-by-review/".concat(_this.$route.params.id));
+                        return axios.get("/api/booking-by-review/".concat(_this.review.id));
 
                       case 3:
                         res = _context.sent;

@@ -58,6 +58,7 @@
         data() {
             return {
                 review: {
+                    id: null,
                     rating: 5,
                     content: '',
                     date: null,
@@ -69,15 +70,16 @@
         },
         created() {
             this.loading = true;
+            this.review.id = this.$route.params.id;
             (async () => {
                 try {
-                    const response = await axios.get(`/api/reviews/${this.$route.params.id}`);
+                    const response = await axios.get(`/api/reviews/${this.review.id}`);
                     this.review.date = response.data.data;
                 } catch (e) {
                     if (is404(e)) {
                         return await (async () => {
                             try {
-                                const res = await axios.get(`/api/booking-by-review/${this.$route.params.id}`);
+                                const res = await axios.get(`/api/booking-by-review/${this.review.id}`);
                                 this.booking = res.data.data;
                             } catch (e) {
                                 this.error = !is404(e);
