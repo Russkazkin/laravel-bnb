@@ -52,7 +52,7 @@
 </template>
 
 <script>
-    import {is404} from '../shared/utils/responce';
+    import {is404, is422 } from '../shared/utils/responce';
     export default {
         name: "Review",
         data() {
@@ -66,6 +66,7 @@
                 loading: false,
                 booking: null,
                 error: false,
+                errors: null,
             }
         },
         created() {
@@ -112,12 +113,21 @@
         },
         methods: {
             submit() {
+                this.errors = null;
                 this.loading = true;
                 (async () => {
                     try {
                         const response = await axios.post(`/api/reviews`, this.review);
                         console.log(response);
                     } catch (e) {
+                        if(is422(e)) {
+                            const errors = e.response.data.errors;
+                            if(errors["content"] && _.size(errors) === 1) {
+                                this.errors = errors;
+                                return;
+                            }
+                            return;
+                        }
                         this.error = true;
                         console.log(e.response);
                     } finally {

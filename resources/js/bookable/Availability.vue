@@ -46,6 +46,8 @@
 </template>
 
 <script>
+    import { is422 } from "../shared/utils/responce";
+
     export default {
         name: "Availability",
         data(){
@@ -66,7 +68,7 @@
                         const response = await axios.get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`);
                         this.status = response.status;
                     } catch (error) {
-                        if(error.response.status === 422) {
+                        if(is422(error)) {
                             this.errors = error.response.data.errors;
                         }
                         this.status = error.response.status;
