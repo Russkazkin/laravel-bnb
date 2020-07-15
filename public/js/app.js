@@ -2504,16 +2504,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       case 3:
                         res = _context.sent;
                         _this.booking = res.data.data;
-                        _context.next = 11;
+                        _context.next = 10;
                         break;
 
                       case 7:
                         _context.prev = 7;
                         _context.t0 = _context["catch"](0);
                         _this.error = !Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0);
-                        console.log('here');
 
-                      case 11:
+                      case 10:
                       case "end":
                         return _context.stop();
                     }

@@ -85,7 +85,6 @@
                                 this.booking = res.data.data;
                             } catch (e) {
                                 this.error = !is404(e);
-                                console.log('here');
                             }
                         })();
                     }
