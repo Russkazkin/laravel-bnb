@@ -2443,6 +2443,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
@@ -2619,6 +2626,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee3, null, [[0, 7, 17, 20]]);
       }))();
+    },
+    errorsFor: function errorsFor(field) {
+      return this.errors !== null && this.errors[field] ? this.errors[field] : null;
     }
   }
 });
@@ -61571,47 +61581,77 @@ var render = function() {
                                   1
                                 ),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "form-group" }, [
-                                  _c(
-                                    "label",
-                                    {
-                                      staticClass: "text-muted",
-                                      attrs: { for: "content" }
-                                    },
-                                    [_vm._v("And add review if you wish")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("textarea", {
-                                    directives: [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
                                       {
-                                        name: "model",
-                                        rawName: "v-model",
-                                        value: _vm.review.content,
-                                        expression: "review.content"
-                                      }
-                                    ],
-                                    staticClass: "form-control",
-                                    attrs: {
-                                      name: "content",
-                                      id: "content",
-                                      cols: "5",
-                                      rows: "5"
-                                    },
-                                    domProps: { value: _vm.review.content },
-                                    on: {
-                                      input: function($event) {
-                                        if ($event.target.composing) {
-                                          return
+                                        staticClass: "text-muted",
+                                        attrs: { for: "content" }
+                                      },
+                                      [_vm._v("And add review if you wish")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("textarea", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.review.content,
+                                          expression: "review.content"
                                         }
-                                        _vm.$set(
-                                          _vm.review,
-                                          "content",
-                                          $event.target.value
-                                        )
+                                      ],
+                                      staticClass: "form-control",
+                                      class: [
+                                        {
+                                          "is-invalid": _vm.errorsFor("content")
+                                        }
+                                      ],
+                                      attrs: {
+                                        name: "content",
+                                        id: "content",
+                                        cols: "5",
+                                        rows: "5"
+                                      },
+                                      domProps: { value: _vm.review.content },
+                                      on: {
+                                        input: function($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.review,
+                                            "content",
+                                            $event.target.value
+                                          )
+                                        }
                                       }
-                                    }
-                                  })
-                                ]),
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.errorsFor("content"), function(
+                                      error,
+                                      index
+                                    ) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          key: "content" + index,
+                                          staticClass: "invalid-feedback"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                " +
+                                              _vm._s(error) +
+                                              "\n                            "
+                                          )
+                                        ]
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
                                 _vm._v(" "),
                                 _c(
                                   "button",

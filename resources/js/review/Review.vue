@@ -39,8 +39,15 @@
                                 <textarea name="content"
                                           id="content"
                                           cols="5" rows="5"
-                                          class="form-control" v-model="review.content">
+                                          class="form-control"
+                                          :class="[{ 'is-invalid' : errorsFor('content') }]"
+                                          v-model="review.content">
                                 </textarea>
+                                <div class="invalid-feedback"
+                                     v-for="(error, index) in errorsFor('content')"
+                                     :key="'content' + index">
+                                    {{ error }}
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary" :disabled="loading">Submit</button>
                         </form>
@@ -134,7 +141,10 @@
                         this.loading = false;
                     }
                 })();
-            }
+            },
+            errorsFor(field) {
+                return this.errors !== null && this.errors[field] ? this.errors[field] : null;
+            },
         }
     }
 </script>
