@@ -49,7 +49,7 @@
                                     {{ error }}
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary" :disabled="loading">Submit</button>
+                            <button type="submit" class="btn btn-primary" :disabled="sending">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -74,6 +74,7 @@
                 booking: null,
                 error: false,
                 errors: null,
+                sending: false,
             }
         },
         created() {
@@ -121,7 +122,7 @@
         methods: {
             submit() {
                 this.errors = null;
-                this.loading = true;
+                this.sending = true;
                 (async () => {
                     try {
                         const response = await axios.post(`/api/reviews`, this.review);
@@ -138,7 +139,7 @@
                         this.error = true;
                         console.log(e.response);
                     } finally {
-                        this.loading = false;
+                        this.sending = false;
                     }
                 })();
             },

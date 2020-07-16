@@ -2464,7 +2464,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       loading: false,
       booking: null,
       error: false,
-      errors: null
+      errors: null,
+      sending: false
     };
   },
   created: function created() {
@@ -2570,7 +2571,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       this.errors = null;
-      this.loading = true;
+      this.sending = true;
 
       _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var response, errors;
@@ -2616,7 +2617,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 17:
                 _context3.prev = 17;
-                _this2.loading = false;
+                _this2.sending = false;
                 return _context3.finish(17);
 
               case 20:
@@ -61659,7 +61660,7 @@ var render = function() {
                                     staticClass: "btn btn-primary",
                                     attrs: {
                                       type: "submit",
-                                      disabled: _vm.loading
+                                      disabled: _vm.sending
                                     }
                                   },
                                   [_vm._v("Submit")]
