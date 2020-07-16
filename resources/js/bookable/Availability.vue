@@ -15,12 +15,8 @@
                            v-model="from"
                            placeholder="Start Date"
                            class="form-control form-control-sm"
-                           :class="[{'is-invalid' : this.errorsFor('from')}]">
-                    <div class="invalid-feedback"
-                         v-for="(error, index) in this.errorsFor('from')"
-                         :key="'from-error-' + index">
-                        {{ error }}
-                    </div>
+                           :class="[{'is-invalid' : errorsFor('from')}]">
+                    <validation-errors :errors="errorsFor('from')"></validation-errors>
                 </div>
 
                 <div class="form-group col-md-6">
@@ -31,12 +27,8 @@
                            v-model="to"
                            placeholder="End Date"
                            class="form-control form-control-sm"
-                           :class="[{'is-invalid' : this.errorsFor('to')}]">
-                    <div class="invalid-feedback"
-                         v-for="(error, index) in this.errorsFor('to')"
-                         :key="'to-error-' + index">
-                        {{ error }}
-                    </div>
+                           :class="[{'is-invalid' : errorsFor('to')}]">
+                    <validation-errors :errors="errorsFor('to')"></validation-errors>
                 </div>
 
             </div>
