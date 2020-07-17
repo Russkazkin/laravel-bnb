@@ -56,8 +56,10 @@
 
 <script>
     import {is404, is422 } from '../shared/utils/responce';
+    import validationErrors from '../shared/mixins/validationErrors';
     export default {
         name: "Review",
+        mixins: [validationErrors],
         data() {
             return {
                 review: {
@@ -69,7 +71,6 @@
                 loading: false,
                 booking: null,
                 error: false,
-                errors: null,
                 sending: false,
             }
         },
@@ -138,9 +139,6 @@
                         this.sending = false;
                     }
                 })();
-            },
-            errorsFor(field) {
-                return this.errors !== null && this.errors[field] ? this.errors[field] : null;
             },
         }
     }
