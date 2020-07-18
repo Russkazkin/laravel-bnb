@@ -38,18 +38,15 @@
 
             }
         },
-        created() {
+        async created() {
             this.loading = true;
-            (async () => {
-                try {
-                    const response = await axios.get(`/api/bookables/${this.bookableId}/reviews`);
-                    this.reviews = response.data.data;
-                } catch (e) {
-                    console.log(e.response);
-                } finally {
-                    this.loading = false;
-                }
-            })();
+            try {
+                this.reviews = (await axios.get(`/api/bookables/${this.bookableId}/reviews`)).data.data;
+            } catch (e) {
+                console.log(e.response);
+            } finally {
+                this.loading = false;
+            }
         }
     }
 </script>
