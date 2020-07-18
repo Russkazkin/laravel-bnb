@@ -30,17 +30,15 @@
             },
         },
         methods: {},
-        created() {
+        async created() {
             this.loading = true;
-            axios
-                .get("/api/bookables")
-                .then(response => {
-                    this.items = response.data.data;
-                    this.loading = false;
-                })
-                .catch(error => {
-                    console.log(error);
-                });
+            try {
+                this.items = (await axios.get("/api/bookables")).data.data;
+            } catch (e) {
+                console.log(e);
+            } finally {
+                this.loading = false;
+            }
         }
     }
 </script>
