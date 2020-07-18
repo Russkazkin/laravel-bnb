@@ -74,30 +74,25 @@
                 sending: false,
             }
         },
-        created() {
+        async created() {
             this.loading = true;
             this.review.id = this.$route.params.id;
-            (async () => {
-                try {
-                    const response = await axios.get(`/api/reviews/${this.review.id}`);
-                    this.review.date = response.data.data;
-                } catch (e) {
-                    if (is404(e)) {
-                        return await (async () => {
-                            try {
-                                const res = await axios.get(`/api/booking-by-review/${this.review.id}`);
-                                this.booking = res.data.data;
-                            } catch (e) {
-                                this.error = !is404(e);
-                            }
-                        })();
+
+            try {
+                this.review.date = (await axios.get(`/api/reviews/${this.review.id}`)).data.data;
+            } catch (e) {
+                if (is404(e)) {
+                    try {
+                        this.booking = (await axios.get(`/api/booking-by-review/${this.review.id}`)).data.data;
+                    } catch (e) {
+                        this.error = !is404(e);
                     }
+                } else {
                     this.error = true;
-                    console.log(e.response);
-                } finally {
-                    this.loading = false;
                 }
-            })();
+            } finally {
+                this.loading = false;
+            }
         },
         computed: {
             alreadyReviewed() {

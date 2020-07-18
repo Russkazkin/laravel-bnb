@@ -2460,82 +2460,63 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     var _this = this;
 
-    this.loading = true;
-    this.review.id = this.$route.params.id;
-
-    _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-      var response;
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+    return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
-          switch (_context2.prev = _context2.next) {
+          switch (_context.prev = _context.next) {
             case 0:
-              _context2.prev = 0;
-              _context2.next = 3;
+              _this.loading = true;
+              _this.review.id = _this.$route.params.id;
+              _context.prev = 2;
+              _context.next = 5;
               return axios.get("/api/reviews/".concat(_this.review.id));
 
-            case 3:
-              response = _context2.sent;
-              _this.review.date = response.data.data;
-              _context2.next = 15;
+            case 5:
+              _this.review.date = _context.sent.data.data;
+              _context.next = 23;
               break;
 
-            case 7:
-              _context2.prev = 7;
-              _context2.t0 = _context2["catch"](0);
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](2);
 
-              if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context2.t0)) {
-                _context2.next = 13;
+              if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0)) {
+                _context.next = 22;
                 break;
               }
 
-              _context2.next = 12;
-              return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-                var res;
-                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-                  while (1) {
-                    switch (_context.prev = _context.next) {
-                      case 0:
-                        _context.prev = 0;
-                        _context.next = 3;
-                        return axios.get("/api/booking-by-review/".concat(_this.review.id));
+              _context.prev = 11;
+              _context.next = 14;
+              return axios.get("/api/booking-by-review/".concat(_this.review.id));
 
-                      case 3:
-                        res = _context.sent;
-                        _this.booking = res.data.data;
-                        _context.next = 10;
-                        break;
+            case 14:
+              _this.booking = _context.sent.data.data;
+              _context.next = 20;
+              break;
 
-                      case 7:
-                        _context.prev = 7;
-                        _context.t0 = _context["catch"](0);
-                        _this.error = !Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t0);
+            case 17:
+              _context.prev = 17;
+              _context.t1 = _context["catch"](11);
+              _this.error = !Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is404"])(_context.t1);
 
-                      case 10:
-                      case "end":
-                        return _context.stop();
-                    }
-                  }
-                }, _callee, null, [[0, 7]]);
-              }))();
+            case 20:
+              _context.next = 23;
+              break;
 
-            case 12:
-              return _context2.abrupt("return", _context2.sent);
-
-            case 13:
+            case 22:
               _this.error = true;
-              console.log(_context2.t0.response);
 
-            case 15:
-              _context2.prev = 15;
+            case 23:
+              _context.prev = 23;
               _this.loading = false;
-              return _context2.finish(15);
+              return _context.finish(23);
 
-            case 18:
+            case 26:
             case "end":
-              return _context2.stop();
+              return _context.stop();
           }
         }
-      }, _callee2, null, [[0, 7, 15, 18]]);
+      }, _callee, null, [[2, 8, 23, 26], [11, 17]]);
     }))();
   },
   computed: {
@@ -2562,59 +2543,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.errors = null;
       this.sending = true;
 
-      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response, errors;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                _context2.prev = 0;
+                _context2.next = 3;
                 return axios.post("/api/reviews", _this2.review);
 
               case 3:
-                response = _context3.sent;
+                response = _context2.sent;
                 console.log(response);
-                _context3.next = 17;
+                _context2.next = 17;
                 break;
 
               case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
 
-                if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context3.t0)) {
-                  _context3.next = 15;
+                if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context2.t0)) {
+                  _context2.next = 15;
                   break;
                 }
 
-                errors = _context3.t0.response.data.errors;
+                errors = _context2.t0.response.data.errors;
 
                 if (!(errors["content"] && _.size(errors) === 1)) {
-                  _context3.next = 14;
+                  _context2.next = 14;
                   break;
                 }
 
                 _this2.errors = errors;
-                return _context3.abrupt("return");
+                return _context2.abrupt("return");
 
               case 14:
-                return _context3.abrupt("return");
+                return _context2.abrupt("return");
 
               case 15:
                 _this2.error = true;
-                console.log(_context3.t0.response);
+                console.log(_context2.t0.response);
 
               case 17:
-                _context3.prev = 17;
+                _context2.prev = 17;
                 _this2.sending = false;
-                return _context3.finish(17);
+                return _context2.finish(17);
 
               case 20:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, null, [[0, 7, 17, 20]]);
+        }, _callee2, null, [[0, 7, 17, 20]]);
       }))();
     }
   }
