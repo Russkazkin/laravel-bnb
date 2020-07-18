@@ -112,28 +112,26 @@
             },
         },
         methods: {
-            submit() {
+            async submit() {
                 this.errors = null;
                 this.sending = true;
-                (async () => {
-                    try {
-                        const response = await axios.post(`/api/reviews`, this.review);
-                        console.log(response);
-                    } catch (e) {
-                        if(is422(e)) {
-                            const errors = e.response.data.errors;
-                            if(errors["content"] && _.size(errors) === 1) {
-                                this.errors = errors;
-                                return;
-                            }
+                try {
+                    const response = await axios.post(`/api/reviews`, this.review);
+                    console.log(response);
+                } catch (e) {
+                    if(is422(e)) {
+                        const errors = e.response.data.errors;
+                        if(errors["content"] && _.size(errors) === 1) {
+                            this.errors = errors;
                             return;
                         }
+                        return;
+                    } else {
                         this.error = true;
-                        console.log(e.response);
-                    } finally {
-                        this.sending = false;
                     }
-                })();
+                } finally {
+                    this.sending = false;
+                }
             },
         }
     }

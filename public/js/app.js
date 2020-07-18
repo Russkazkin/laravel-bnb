@@ -2567,62 +2567,60 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     submit: function submit() {
       var _this2 = this;
 
-      this.errors = null;
-      this.sending = true;
-
-      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response, errors;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
+                _this2.errors = null;
+                _this2.sending = true;
+                _context2.prev = 2;
+                _context2.next = 5;
                 return axios.post("/api/reviews", _this2.review);
 
-              case 3:
+              case 5:
                 response = _context2.sent;
                 console.log(response);
-                _context2.next = 17;
+                _context2.next = 20;
                 break;
 
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](2);
 
                 if (!Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context2.t0)) {
-                  _context2.next = 15;
+                  _context2.next = 19;
                   break;
                 }
 
                 errors = _context2.t0.response.data.errors;
 
                 if (!(errors["content"] && _.size(errors) === 1)) {
-                  _context2.next = 14;
+                  _context2.next = 16;
                   break;
                 }
 
                 _this2.errors = errors;
                 return _context2.abrupt("return");
 
-              case 14:
+              case 16:
                 return _context2.abrupt("return");
 
-              case 15:
+              case 19:
                 _this2.error = true;
-                console.log(_context2.t0.response);
-
-              case 17:
-                _context2.prev = 17;
-                _this2.sending = false;
-                return _context2.finish(17);
 
               case 20:
+                _context2.prev = 20;
+                _this2.sending = false;
+                return _context2.finish(20);
+
+              case 23:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7, 17, 20]]);
+        }, _callee2, null, [[2, 9, 20, 23]]);
       }))();
     }
   }
