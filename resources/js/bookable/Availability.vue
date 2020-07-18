@@ -52,22 +52,19 @@
             }
         },
         methods: {
-            check() {
+            async check() {
                 this.loading = true;
                 this.errors = null;
-                (async () => {
-                    try {
-                        const response = await axios.get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`);
-                        this.status = response.status;
-                    } catch (error) {
-                        if(is422(error)) {
-                            this.errors = error.response.data.errors;
-                        }
-                        this.status = error.response.status;
-                    } finally {
-                        this.loading = false;
+                try {
+                    this.status = (await axios.get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`)).status;
+                } catch (error) {
+                    if(is422(error)) {
+                        this.errors = error.response.data.errors;
                     }
-                })();
+                    this.status = error.response.status;
+                } finally {
+                    this.loading = false;
+                }
             },
         },
         computed: {

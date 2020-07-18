@@ -2021,28 +2021,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     check: function check() {
       var _this = this;
 
-      this.loading = true;
-      this.errors = null;
-
-      _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
+                _this.loading = true;
+                _this.errors = null;
+                _context.prev = 2;
+                _context.next = 5;
                 return axios.get("/api/bookables/".concat(_this.$route.params.id, "/availability?from=").concat(_this.from, "&to=").concat(_this.to));
 
-              case 3:
-                response = _context.sent;
-                _this.status = response.status;
-                _context.next = 11;
+              case 5:
+                _this.status = _context.sent.status;
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](2);
 
                 if (Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context.t0)) {
                   _this.errors = _context.t0.response.data.errors;
@@ -2050,17 +2047,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.status = _context.t0.response.status;
 
-              case 11:
-                _context.prev = 11;
+              case 12:
+                _context.prev = 12;
                 _this.loading = false;
-                return _context.finish(11);
+                return _context.finish(12);
 
-              case 14:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7, 11, 14]]);
+        }, _callee, null, [[2, 8, 12, 15]]);
       }))();
     }
   },
