@@ -2213,7 +2213,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ReviewList",
   props: {
-    bookableId: String
+    bookableId: [String, Number]
   },
   data: function data() {
     return {
