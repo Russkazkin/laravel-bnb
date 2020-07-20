@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <fatal-error v-if="error">We've encountered a problem and unfortunately cannot proceed.</fatal-error>
+        <success v-else-if="success">Thank you for the review</success>
         <div v-else class="row">
             <div :class="[{'col-md-4' : twoColumns}, {'d-none' : oneColumn}]">
                 <div class="card">
@@ -72,6 +73,7 @@
                 booking: null,
                 error: false,
                 sending: false,
+                success: false,
             }
         },
         async created() {
@@ -115,8 +117,10 @@
             async submit() {
                 this.errors = null;
                 this.sending = true;
+                this.success = false;
                 try {
                     const response = await axios.post(`/api/reviews`, this.review);
+                    this.success = 201 === response.status;
                     console.log(response);
                 } catch (e) {
                     if(is422(e)) {
