@@ -2028,18 +2028,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.loading = true;
                 _this.errors = null;
-                _context.prev = 2;
-                _context.next = 5;
+
+                _this.$store.commit('setLastSearch', {
+                  from: _this.from,
+                  to: _this.to
+                });
+
+                _context.prev = 3;
+                _context.next = 6;
                 return axios.get("/api/bookables/".concat(_this.$route.params.id, "/availability?from=").concat(_this.from, "&to=").concat(_this.to));
 
-              case 5:
+              case 6:
                 _this.status = _context.sent.status;
-                _context.next = 12;
+                _context.next = 13;
                 break;
 
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context["catch"](2);
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](3);
 
                 if (Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__["is422"])(_context.t0)) {
                   _this.errors = _context.t0.response.data.errors;
@@ -2047,17 +2053,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.status = _context.t0.response.status;
 
-              case 12:
-                _context.prev = 12;
+              case 13:
+                _context.prev = 13;
                 _this.loading = false;
-                return _context.finish(12);
+                return _context.finish(13);
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[2, 8, 12, 15]]);
+        }, _callee, null, [[3, 9, 13, 16]]);
       }))();
     }
   },

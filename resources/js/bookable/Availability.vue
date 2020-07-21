@@ -55,6 +55,12 @@
             async check() {
                 this.loading = true;
                 this.errors = null;
+
+                this.$store.commit('setLastSearch', {
+                    from: this.from,
+                    to: this.to,
+                });
+
                 try {
                     this.status = (await axios.get(`/api/bookables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`)).status;
                 } catch (error) {
