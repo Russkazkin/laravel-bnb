@@ -2011,8 +2011,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mixins: [_shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_2__["default"]],
   data: function data() {
     return {
-      from: null,
-      to: null,
+      from: this.$store.state.lastSearch.from,
+      to: this.$store.state.lastSearch.to,
       loading: false,
       status: null
     };
