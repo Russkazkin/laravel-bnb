@@ -12,8 +12,8 @@ export default {
     },
     actions: {
         setLastSearch(context, payload) {
-            context.commit('setLastSearch');
-            localStorage.setItem('lastSearch', payload);
+            context.commit('setLastSearch', payload);
+            localStorage.setItem('lastSearch', JSON.stringify(payload));
         }
     },
 }

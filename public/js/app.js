@@ -2029,7 +2029,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.loading = true;
                 _this.errors = null;
 
-                _this.$store.commit('setLastSearch', {
+                _this.$store.dispatch('setLastSearch', {
                   from: _this.from,
                   to: _this.to
                 });
@@ -79416,6 +79416,12 @@ __webpack_require__.r(__webpack_exports__);
   mutations: {
     setLastSearch: function setLastSearch(state, payload) {
       state.lastSearch = payload;
+    }
+  },
+  actions: {
+    setLastSearch: function setLastSearch(context, payload) {
+      context.commit('setLastSearch', payload);
+      localStorage.setItem('lastSearch', JSON.stringify(payload));
     }
   }
 });

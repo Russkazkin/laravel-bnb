@@ -56,7 +56,7 @@
                 this.loading = true;
                 this.errors = null;
 
-                this.$store.commit('setLastSearch', {
+                this.$store.dispatch('setLastSearch', {
                     from: this.from,
                     to: this.to,
                 });
