@@ -78517,6 +78517,9 @@ var app = new Vue({
   store: store,
   components: {
     "Index": _Index__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  beforeCreate: function beforeCreate() {
+    this.$store.dispatch("loadStoredSearch");
   }
 });
 
@@ -79422,6 +79425,13 @@ __webpack_require__.r(__webpack_exports__);
     setLastSearch: function setLastSearch(context, payload) {
       context.commit('setLastSearch', payload);
       localStorage.setItem('lastSearch', JSON.stringify(payload));
+    },
+    loadStoredSearch: function loadStoredSearch(context) {
+      var lastSearch = localStorage.getItem('lastSearch');
+
+      if (lastSearch) {
+        context.commit('setLastSearch', JSON.parse(lastSearch));
+      }
     }
   }
 });
