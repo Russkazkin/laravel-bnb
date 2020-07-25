@@ -34,7 +34,10 @@
                 </div>
 
             </div>
-            <button type="submit" class="btn btn-sm btn-block btn-secondary" :disabled="loading">Check</button>
+            <button type="submit" class="btn btn-sm btn-block btn-secondary" :disabled="loading">
+                <span v-if="!loading">Check</span>
+                <span v-if="loading"><i class="fas fa-spinner fa-pulse"></i></span>
+            </button>
         </form>
     </div>
 </template>

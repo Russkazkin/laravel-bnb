@@ -2006,6 +2006,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61244,7 +61247,15 @@ var render = function() {
             staticClass: "btn btn-sm btn-block btn-secondary",
             attrs: { type: "submit", disabled: _vm.loading }
           },
-          [_vm._v("Check")]
+          [
+            !_vm.loading ? _c("span", [_vm._v("Check")]) : _vm._e(),
+            _vm._v(" "),
+            _vm.loading
+              ? _c("span", [
+                  _c("i", { staticClass: "fas fa-spinner fa-pulse" })
+                ])
+              : _vm._e()
+          ]
         )
       ]
     )
