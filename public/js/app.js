@@ -2060,15 +2060,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 13:
                 _context.prev = 13;
+
+                _this.$emit("availability", _this.isAvailable);
+
                 _this.loading = false;
                 return _context.finish(13);
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[3, 9, 13, 16]]);
+        }, _callee, null, [[3, 9, 13, 17]]);
       }))();
     }
   },
@@ -2172,6 +2175,11 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log(error);
     });
+  },
+  methods: {
+    checkPrice: function checkPrice(isAvailable) {
+      console.log(isAvailable);
+    }
   }
 });
 
@@ -61370,7 +61378,20 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [_c("availability")], 1)
+      _c(
+        "div",
+        { staticClass: "col-md-4" },
+        [
+          _c("availability", {
+            on: {
+              availability: function($event) {
+                return _vm.checkPrice($event)
+              }
+            }
+          })
+        ],
+        1
+      )
     ])
   ])
 }

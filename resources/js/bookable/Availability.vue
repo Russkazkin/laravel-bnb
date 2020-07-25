@@ -74,6 +74,7 @@
                     }
                     this.status = error.response.status;
                 } finally {
+                    this.$emit("availability", this.isAvailable);
                     this.loading = false;
                 }
             },
