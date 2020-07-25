@@ -23,7 +23,7 @@ $factory->define(Bookable::class, function (Faker $faker) use ($suffix) {
         'name' => $faker->city . ' ' . Arr::random($suffix),
         'description' => $faker->paragraph(3),
         'image' => $faker->imageUrl(480, 320, 'city', true),
-        'price' => $faker->randomNumber(4),
+        'price' => $faker->randomNumber(3),
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
         'email' => $faker->unique()->safeEmail,
