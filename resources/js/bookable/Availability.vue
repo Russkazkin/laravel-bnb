@@ -2,8 +2,10 @@
     <div>
         <h6 class="text-uppercase font-weight-bolder text-secondary">
             Check availability
-            <span v-if="notAvailable" class="text-danger">(not available)</span>
-            <span v-if="isAvailable" class="text-success">(available)</span>
+            <transition name="fade">
+                <span v-if="notAvailable" class="text-danger">(not available)</span>
+                <span v-if="isAvailable" class="text-success">(available)</span>
+            </transition>
         </h6>
         <form method="POST" id="checkoutForm" @submit.prevent="check()">
             <div class="form-row">

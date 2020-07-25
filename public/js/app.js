@@ -2004,6 +2004,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61123,16 +61125,21 @@ var render = function() {
       { staticClass: "text-uppercase font-weight-bolder text-secondary" },
       [
         _vm._v("\n        Check availability\n        "),
-        _vm.notAvailable
-          ? _c("span", { staticClass: "text-danger" }, [
-              _vm._v("(not available)")
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.isAvailable
-          ? _c("span", { staticClass: "text-success" }, [_vm._v("(available)")])
-          : _vm._e()
-      ]
+        _c("transition", { attrs: { name: "fade" } }, [
+          _vm.notAvailable
+            ? _c("span", { staticClass: "text-danger" }, [
+                _vm._v("(not available)")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.isAvailable
+            ? _c("span", { staticClass: "text-success" }, [
+                _vm._v("(available)")
+              ])
+            : _vm._e()
+        ])
+      ],
+      1
     ),
     _vm._v(" "),
     _c(
