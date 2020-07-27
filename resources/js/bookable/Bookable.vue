@@ -51,6 +51,7 @@
 <script>
     import Availability from "./Availability";
     import ReviewList from "./ReviewList";
+    import {mapState} from "vuex";
 
     export default {
         name: "Bookable",
@@ -62,6 +63,7 @@
             return {
                 item: null,
                 loading: false,
+                total: null,
             }
         },
         created() {
@@ -76,9 +78,22 @@
                     console.log(error);
                 });
         },
+        computed: mapState({
+            lastSearch: "lastSearch"
+        }),
         methods: {
-            checkPrice(isAvailable) {
-                console.log(isAvailable);
+            async checkPrice(isAvailable) {
+                if(!isAvailable) {
+                    this.total = null;
+                    return;
+                }
+
+                try {
+                    this.total = (await axios.get(`/api/bookables/${this.item.id}/total?from=${this.lastSearch.from}&to=${this.lastSearch.to}`)).data.total;
+                } catch (e) {
+                    this.total = null;
+                    console.log(e);
+                }
             }
         },
     }

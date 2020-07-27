@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('bookables', 'Api\BookablesController')->only(['index', 'show']);
 Route::get('bookables/{bookable}/availability', 'Api\BookableAvailabilityController')->name('bookables.availability.check');
 Route::get('bookables/{bookable}/reviews', 'Api\BookableReviewController')->name('bookables.reviews.index');
-Route::get('bookables/{bookable}/price', 'Api\BookablePriceController')->name('bookables.price.show');
+Route::get('bookables/{bookable}/total', 'Api\BookablePriceController')->name('bookables.total.show');
 
 Route::get('booking-by-review/{reviewKey}' , 'Api\BookingByReviewController')->name('booking.by-review.show');
 
