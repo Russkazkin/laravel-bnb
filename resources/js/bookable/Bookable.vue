@@ -42,7 +42,10 @@
                 <review-list :bookable-id="this.$route.params.id"></review-list>
             </div>
             <div class="col-md-4">
-                <availability @availability="checkPrice($event)"></availability>
+                <availability @availability="checkPrice($event)" class="mb-3"></availability>
+                <transition name="fade">
+                    <button class="btn btn-outline-secondary btn-block btn-sm" v-if="total">Book now</button>
+                </transition>
             </div>
         </div>
     </div>
@@ -89,7 +92,7 @@
                 }
 
                 try {
-                    this.total = (await axios.get(`/api/bookables/${this.item.id}/total?from=${this.lastSearch.from}&to=${this.lastSearch.to}`)).data.total;
+                    this.total = (await axios.get(`/api/bookables/${this.item.id}/total?from=${this.lastSearch.from}&to=${this.lastSearch.to}`)).data;
                 } catch (e) {
                     this.total = null;
                     console.log(e);

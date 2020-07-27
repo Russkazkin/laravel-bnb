@@ -2160,6 +2160,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2213,7 +2216,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios.get("/api/bookables/".concat(_this2.item.id, "/total?from=").concat(_this2.lastSearch.from, "&to=").concat(_this2.lastSearch.to));
 
               case 6:
-                _this2.total = _context.sent.data.total;
+                _this2.total = _context.sent.data;
                 _context.next = 13;
                 break;
 
@@ -61434,12 +61437,23 @@ var render = function() {
         { staticClass: "col-md-4" },
         [
           _c("availability", {
+            staticClass: "mb-3",
             on: {
               availability: function($event) {
                 return _vm.checkPrice($event)
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("transition", { attrs: { name: "fade" } }, [
+            _vm.total
+              ? _c(
+                  "button",
+                  { staticClass: "btn btn-outline-secondary btn-block btn-sm" },
+                  [_vm._v("Book now")]
+                )
+              : _vm._e()
+          ])
         ],
         1
       )
