@@ -44,7 +44,7 @@
             <div class="col-md-4">
                 <availability @availability="checkPrice($event)" class="mb-5"></availability>
                 <transition name="fade">
-                    <price-breakdown v-if="total"></price-breakdown>
+                    <price-breakdown v-if="total" :total="this.total" class="mb-3"></price-breakdown>
                 </transition>
                 <transition name="fade">
                     <button class="btn btn-outline-secondary btn-block btn-sm" v-if="total">Book now</button>
