@@ -2167,6 +2167,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2239,6 +2243,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee, null, [[3, 9]]);
       }))();
+    },
+    addToBasket: function addToBasket() {
+      this.$store.commit("addToBasket", {
+        bookable: this.item,
+        total: this.total,
+        dates: this.lastSearch
+      });
     }
   }
 });
@@ -61500,8 +61511,11 @@ var render = function() {
             _vm.total
               ? _c(
                   "button",
-                  { staticClass: "btn btn-outline-secondary btn-block btn-sm" },
-                  [_vm._v("Book now")]
+                  {
+                    staticClass: "btn btn-outline-secondary btn-block btn-sm",
+                    on: { click: _vm.addToBasket }
+                  },
+                  [_vm._v("\n                    Book now\n                ")]
                 )
               : _vm._e()
           ])

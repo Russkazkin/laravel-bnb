@@ -47,7 +47,11 @@
                     <price-breakdown v-if="total" :total="this.total" class="mb-3"></price-breakdown>
                 </transition>
                 <transition name="fade">
-                    <button class="btn btn-outline-secondary btn-block btn-sm" v-if="total">Book now</button>
+                    <button class="btn btn-outline-secondary btn-block btn-sm"
+                            v-if="total"
+                            @click="addToBasket">
+                        Book now
+                    </button>
                 </transition>
             </div>
         </div>
@@ -102,6 +106,13 @@
                     this.total = null;
                     console.log(e);
                 }
+            },
+            addToBasket() {
+                this.$store.commit("addToBasket", {
+                    bookable: this.item,
+                    total: this.total,
+                    dates: this.lastSearch,
+                })
             }
         },
     }
