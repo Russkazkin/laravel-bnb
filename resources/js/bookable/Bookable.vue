@@ -101,16 +101,17 @@
                     console.log(error);
                 });
         },
-        computed: mapState({
-            lastSearch: "lastSearch",
-            inBasketAlready(state) {
-                if(this.item === null) {
+        computed: {
+            ...mapState({
+                lastSearch: "lastSearch",
+            }),
+            inBasketAlready() {
+                if (this.item === null) {
                     return false;
                 }
-                return state.basket.items.reduce(
-                    (result, item) => result || item.bookable.id === this.item.id, false);
-            }
-        }),
+                return this.$store.getters.inBasketAlready(this.item.id);
+            },
+        },
         methods: {
             async checkPrice(isAvailable) {
                 if(!isAvailable) {
