@@ -34,6 +34,6 @@ const app = new Vue({
         "Index": Index
     },
     beforeCreate() {
-        this.$store.dispatch("loadStoredSearch");
+        this.$store.dispatch("loadStoredState");
     },
 });

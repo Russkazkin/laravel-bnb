@@ -127,14 +127,14 @@
                 }
             },
             addToBasket() {
-                this.$store.commit("addToBasket", {
+                this.$store.dispatch("addToBasket", {
                     bookable: this.item,
                     total: this.total,
                     dates: this.lastSearch,
                 })
             },
             removeFromBasket() {
-                this.$store.commit("removeFromBasket", this.item.id);
+                this.$store.dispatch("removeFromBasket", this.item.id);
             }
         },
     }

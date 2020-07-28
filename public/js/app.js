@@ -2291,14 +2291,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     addToBasket: function addToBasket() {
-      this.$store.commit("addToBasket", {
+      this.$store.dispatch("addToBasket", {
         bookable: this.item,
         total: this.total,
         dates: this.lastSearch
       });
     },
     removeFromBasket: function removeFromBasket() {
-      this.$store.commit("removeFromBasket", this.item.id);
+      this.$store.dispatch("removeFromBasket", this.item.id);
     }
   }
 });
@@ -78890,7 +78890,7 @@ var app = new Vue({
     "Index": _Index__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   beforeCreate: function beforeCreate() {
-    this.$store.dispatch("loadStoredSearch");
+    this.$store.dispatch("loadStoredState");
   }
 });
 
@@ -79888,6 +79888,9 @@ __webpack_require__.r(__webpack_exports__);
       state.basket.items = state.basket.items.filter(function (item) {
         return item.bookable.id !== payload;
       });
+    },
+    setBasket: function setBasket(state, payload) {
+      state.basket = payload;
     }
   },
   actions: {
@@ -79895,13 +79898,32 @@ __webpack_require__.r(__webpack_exports__);
       context.commit('setLastSearch', payload);
       localStorage.setItem('lastSearch', JSON.stringify(payload));
     },
-    loadStoredSearch: function loadStoredSearch(context) {
+    loadStoredState: function loadStoredState(context) {
       var lastSearch = localStorage.getItem('lastSearch');
 
       if (lastSearch) {
         context.commit('setLastSearch', JSON.parse(lastSearch));
       }
-    }
+
+      var basket = localStorage.getItem('basket');
+
+      if (basket) {
+        context.commit('setBasket', JSON.parse(basket));
+      }
+    },
+    addToBasket: function addToBasket(_ref, payload) {
+      var commit = _ref.commit,
+          state = _ref.state;
+      commit('addToBasket', payload);
+      localStorage.setItem('basket', JSON.stringify(state.basket));
+    },
+    removeFromBasket: function removeFromBasket(_ref2, payload) {
+      var commit = _ref2.commit,
+          state = _ref2.state;
+      commit('removeFromBasket', payload);
+      localStorage.setItem('basket', JSON.stringify(state.basket));
+    },
+    setBasket: function setBasket(context, payload) {}
   },
   getters: {
     itemsInBasket: function itemsInBasket(state) {
