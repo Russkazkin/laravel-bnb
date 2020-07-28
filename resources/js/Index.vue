@@ -13,14 +13,31 @@
                     </li>
                 </ul>
             </div>
+            <router-link class="btn btn-outline-light" :to="{name: 'home'}">
+                Basket <span v-if="itemsInBasket" class="badge badge-light ml-2">{{ itemsInBasket }}</span>
+            </router-link>
         </nav>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
+    import { mapState, mapGetters } from "vuex";
     export default {
         name: "Index",
+        data() {
+            return {
+                lastSearch: this.$store.state.lastSearch,
+            }
+        },
+        computed: {
+            ...mapState({
+                lastSearch: "lastSearch",
+            }),
+            ...mapGetters({
+                itemsInBasket: "itemsInBasket",
+            }),
+        }
     }
 </script>
 
