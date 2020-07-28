@@ -47,12 +47,16 @@
                     <price-breakdown v-if="total" :total="this.total" class="mb-3"></price-breakdown>
                 </transition>
                 <transition name="fade">
-                    <button class="btn btn-outline-secondary btn-block btn-sm"
+                    <button class="btn btn-outline-secondary btn-block btn-sm mb-2"
                             v-if="total"
-                            @click="addToBasket">
+                            @click="addToBasket"
+                            :disabled="inBasketAlready">
                         Book now
                     </button>
                 </transition>
+                <div v-if="inBasketAlready" class="text-secondary text-small">
+                    Seems like you've added this item in the basket already. If you want to change the dates, first empty the basket
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +95,14 @@
                 });
         },
         computed: mapState({
-            lastSearch: "lastSearch"
+            lastSearch: "lastSearch",
+            inBasketAlready(state) {
+                if(this.bookable === null) {
+                    return false;
+                }
+                return state.basket.items.reduce(
+                    (result, item) => result || item.bookable.id === this.item.id, false);
+            }
         }),
         methods: {
             async checkPrice(isAvailable) {
@@ -118,6 +129,7 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="sass">
+    .text-small
+        font-size: .75rem
 </style>

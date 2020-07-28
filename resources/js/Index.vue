@@ -32,7 +32,7 @@
         },
         computed: {
             ...mapState({
-                lastSearch: "lastSearch",
+                lastSearchComputed: "lastSearch",
             }),
             ...mapGetters({
                 itemsInBasket: "itemsInBasket",
