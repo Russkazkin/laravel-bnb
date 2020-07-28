@@ -2196,6 +2196,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2230,7 +2237,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     inBasketAlready: function inBasketAlready(state) {
       var _this2 = this;
 
-      if (this.bookable === null) {
+      if (this.item === null) {
         return false;
       }
 
@@ -2286,6 +2293,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         total: this.total,
         dates: this.lastSearch
       });
+    },
+    removeFromBasket: function removeFromBasket() {
+      this.$store.commit("removeFromBasket", this.item.id);
     }
   }
 });
@@ -61619,6 +61629,24 @@ var render = function() {
                     on: { click: _vm.addToBasket }
                   },
                   [_vm._v("\n                    Book now\n                ")]
+                )
+              : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("transition", { attrs: { name: "fade" } }, [
+            _vm.inBasketAlready
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "btn btn-outline-secondary btn-block btn-sm mb-2",
+                    on: { click: _vm.removeFromBasket }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    Remove from basket\n                "
+                    )
+                  ]
                 )
               : _vm._e()
           ]),
