@@ -13,7 +13,7 @@
                     </li>
                 </ul>
             </div>
-            <router-link class="btn btn-outline-light" :to="{name: 'home'}">
+            <router-link class="btn btn-outline-light" :to="{name: 'basket'}">
                 Basket <span v-if="itemsInBasket" class="badge badge-light ml-2">{{ itemsInBasket }}</span>
             </router-link>
         </nav>
