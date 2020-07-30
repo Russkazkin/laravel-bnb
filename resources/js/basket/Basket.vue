@@ -26,7 +26,10 @@
                         <div>To {{ item.dates.to | dateFormatted }}</div>
                     </div>
                     <div class="pb-3 d-flex justify-content-between text-secondary">
-                        <button role="button" class="btn btn-outline-secondary btn-sm btn-block">
+                        <button
+                            role="button"
+                            class="btn btn-outline-secondary btn-sm btn-block"
+                            @click="$store.dispatch('removeFromBasket', item.bookable.id)">
                             <i class="fas fa-trash-alt"></i> Remove
                         </button>
                     </div>
