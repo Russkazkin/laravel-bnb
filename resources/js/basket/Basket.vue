@@ -2,7 +2,40 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                Checkout form
+                <form action="">
+                    <div class="form-row mb-3">
+                        <div class="col-md-6">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="">Address</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-row mb-3">
+                        <div class="col-md-6">
+                            <label for="">Country</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">State</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="">ZIP</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md-4">
                 <div class="d-flex justify-content-between">
