@@ -17043,3 +17043,15 @@ readers do not read off random characters that represent icons */
   opacity: 0;
 }
 
+.text-small-3 {
+  font-size: 0.75rem;
+}
+
+.text-small-2 {
+  font-size: 0.5rem;
+}
+
+.text-small-1 {
+  font-size: 0.25rem;
+}
+

@@ -18,6 +18,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 Vue.filter("fromNow", value => moment(value).fromNow());
+Vue.filter("dateFormatted", value => moment(value).format('LL'));
 
 Vue.component("starRating", StarRating);
 Vue.component("fatal-error", FatalError);
