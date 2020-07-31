@@ -1,7 +1,7 @@
 <template>
     <div class="card bookable-card mx-2 mb-3" style="width: 18rem;">
         <router-link :to="{name: 'bookable', params: { id }}">
-            <img src="/img/villa.jpg" class="card-img-top" alt="">
+            <img :src="image" class="card-img-top" alt="">
         </router-link>
         <div class="card-body">
             <h2 class="mb-3">
