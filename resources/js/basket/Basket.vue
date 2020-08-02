@@ -5,30 +5,30 @@
                 <form action="">
                     <div class="form-row mb-3">
                         <div class="col-md-6">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name">
                         </div>
                         <div class="col-md-6">
-                            <label for="">Email</label>
-                            <input type="email" class="form-control">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" id="email">
                         </div>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="">Address</label>
-                        <input type="text" class="form-control">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" name="address" id="address">
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-md-6">
-                            <label for="">Country</label>
-                            <input type="text" class="form-control">
+                            <label for="country">Country</label>
+                            <input type="text" class="form-control" name="country" id="country">
                         </div>
                         <div class="col-md-4">
-                            <label for="">State</label>
-                            <input type="text" class="form-control">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" name="state" id="state">
                         </div>
                         <div class="col-md-2">
-                            <label for="">ZIP</label>
-                            <input type="text" class="form-control">
+                            <label for="zip">ZIP</label>
+                            <input type="text" class="form-control" name="zip" id="zip">
                         </div>
                     </div>
                     <hr>
