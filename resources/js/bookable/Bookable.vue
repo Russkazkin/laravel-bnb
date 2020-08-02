@@ -8,7 +8,7 @@
                     <div class="card-header">
                         <h5 class="mb-0">{{ item.name }}</h5>
                     </div>
-                    <img src="/img/villa.jpg" alt="" width="100%">
+                    <img :src="item.image" alt="" width="100%">
                     <div class="card-body">
                         <p>
                             {{ item.description }}
