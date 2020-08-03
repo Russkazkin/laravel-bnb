@@ -14,7 +14,8 @@ class AddPriceAndAddressToBookingsTable extends Migration
     public function up()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            //
+            $table->decimal('price')->nullable();
+            $table->foreignId('address_id')->nullable()->constrained();
         });
     }
 
@@ -26,7 +27,8 @@ class AddPriceAndAddressToBookingsTable extends Migration
     public function down()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            //
+            $table->dropColumn('price');
+            $table->dropForeign(['address_id']);
         });
     }
 }
