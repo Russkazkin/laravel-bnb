@@ -13,7 +13,7 @@ class CheckoutRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'customer.name' => 'required|min:5',
+            'customer.email' => 'required|email',
+            'customer.address' => 'required|min:10',
+            'customer.country' => 'required|min:2',
+            'customer.state' => 'required|min:2',
+            'customer.zip' => 'required|min:2',
         ];
     }
 }
