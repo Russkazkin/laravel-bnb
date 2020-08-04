@@ -15,6 +15,6 @@ class CheckoutController extends Controller
      */
     public function __invoke(CheckoutRequest $request)
     {
-        //
+        return $request;
     }
 }
