@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Bookable;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CheckoutRequest extends FormRequest
@@ -24,6 +25,16 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
+            'bookings' => 'required|array|min:1',
+            'bookings.*' => ['required', function($attribute, $value, $fail) {
+                $bookable = Bookable::findOrFail($value['bookable_id']);
+                if(!$bookable->checkAvailabilityFor($value['from'], $value['to'])) {
+                    $fail("The object $bookable->name is not available in given dates");
+                }
+            }],
+            'bookings.*.bookable_id' => 'required|exists:bookables,id',
+            'bookings.*.from' => 'required|date|after_or_equal:today',
+            'bookings.*.to' => 'required|date|after_or_equal:bookings.*.from',
             'customer.name' => 'required|min:5',
             'customer.email' => 'required|email',
             'customer.address' => 'required|min:10',
