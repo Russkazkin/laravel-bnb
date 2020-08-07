@@ -68,4 +68,10 @@ class Booking extends Model
             $booking->review_key = Str::uuid();
         });
     }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
 }
