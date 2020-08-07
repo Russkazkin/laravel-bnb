@@ -31,6 +31,10 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking betweenDates($from, $to)
  * @property string $review_key
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereReviewKey($value)
+ * @property float|null $price
+ * @property int|null $address_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereAddressId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking wherePrice($value)
  */
 class Booking extends Model
 {

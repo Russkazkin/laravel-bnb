@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Bookable;
+use App\Booking;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CheckoutRequest;
 
@@ -24,6 +25,16 @@ class CheckoutController extends Controller
                 }
             }],
         ]);
-        return $request;
+
+        $bookingsData = $request['bookings'];
+        $addressData = $request['customer'];
+
+        $bookings = collect($bookingsData)->map(function ($bookingData){
+            $booking = new Booking();
+            $booking->from = $bookingData['from'];
+            $booking->to = $bookingData['to'];
+            $booking->price = 200;
+        });
+        return $$bookingsData;
     }
 }
