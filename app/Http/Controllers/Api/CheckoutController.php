@@ -14,7 +14,7 @@ class CheckoutController extends Controller
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Support\Collection
      */
     public function __invoke(CheckoutRequest $request)
     {

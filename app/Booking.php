@@ -35,6 +35,7 @@ use Illuminate\Support\Str;
  * @property int|null $address_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking whereAddressId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Booking wherePrice($value)
+ * @property-read \App\Address|null $address
  */
 class Booking extends Model
 {
