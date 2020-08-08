@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -56,5 +57,17 @@ class Bookable extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function totalFor($from, $to): array
+    {
+        $days = (new Carbon($from))->diffInDays(New Carbon($to)) + 1;
+        $total = $days * $this->price;
+        return [
+            'total' => $total,
+            'breakdown' => [
+                $this->price => $days,
+            ],
+        ];
     }
 }
