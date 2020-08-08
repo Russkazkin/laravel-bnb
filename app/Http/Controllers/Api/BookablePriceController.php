@@ -24,15 +24,6 @@ class BookablePriceController extends Controller
             'to' => 'required|date_format:Y-m-d|after_or_equal:from',
         ]);
 
-        $days = (new Carbon($data['from']))->diffInDays(New Carbon($data['to'])) + 1;
-
-        $total = $days * $bookable->price;
-
-        return response()->json([
-            'total' => $total,
-            'breakdown' => [
-                $bookable->price => $days,
-            ],
-        ]);
+        return response()->json($bookable->totalFor($data['from'], $data['to']));
     }
 }
