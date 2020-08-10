@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <form action="">
+                <form @submit.prevent="book">
                     <div class="form-row mb-3">
                         <div class="col-md-6">
                             <label for="name">Name</label>
@@ -74,10 +74,13 @@
 
 <script>
     import { mapState, mapGetters } from "vuex";
+    import validationErrors from "../shared/mixins/validationErrors";
     export default {
         name: "Basket",
+        mixins: [validationErrors],
         data() {
             return {
+                loading: false,
                 customer: {
                     name: null,
                     email: null,
@@ -93,7 +96,26 @@
             ...mapState({
                 basket: state => state.basket.items,
             }),
-        }
+        },
+        methods: {
+            async book() {
+                this.loading = true;
+                try {
+                    await axios.post(`/api/checkout`, {
+                        customer: this.customer,
+                        bookings: this.basket.map(basketItem => ({
+                            bookable_id: basketItem.bookable.id,
+                            from: basketItem.dates.from,
+                            to: basketItem.dates.to
+                        })),
+                    });
+                } catch (e) {
+
+                } finally {
+                    this.loading = false;
+                }
+            }
+        },
     }
 </script>
 
