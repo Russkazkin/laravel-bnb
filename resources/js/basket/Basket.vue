@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8" v-if="itemsInBasket">
                 <form @submit.prevent="book">
                     <div class="form-row mb-3">
                         <div class="col-md-6">
@@ -34,6 +34,13 @@
                     <hr>
                     <button type="submit" class="btn btn btn-primary btn-block">Book Now</button>
                 </form>
+            </div>
+            <div class="col-md-8" v-else>
+                <div class="jumbotron jumbotron-fluid text-center">
+                    <h1>
+                        Empty
+                    </h1>
+                </div>
             </div>
             <div class="col-md-4">
                 <div class="d-flex justify-content-between">
