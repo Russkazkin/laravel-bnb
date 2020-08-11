@@ -1,5 +1,7 @@
 <template>
     <div class="container">
+        <fatal-error v-if="error">We've encountered a problem and unfortunately cannot proceed.</fatal-error>
+        <success v-else-if="success">Thank you for the booking!</success>
         <div class="row">
             <div class="col-md-8" v-if="itemsInBasket">
                 <form @submit.prevent="book">
@@ -125,6 +127,8 @@
         data() {
             return {
                 loading: false,
+                error: false,
+                bookingSuccess: false,
                 customer: {
                     name: null,
                     email: null,
@@ -140,11 +144,15 @@
             ...mapState({
                 basket: state => state.basket.items,
             }),
+            success() {
+                return !this.loading && this.itemsInBasket === 0 && this.bookingSuccess;
+            }
         },
         methods: {
             async book() {
                 this.loading = true;
                 this.errors = null;
+                this.bookingSuccess = false;
                 try {
                     await axios.post(`/api/checkout`, {
                         customer: this.customer,
@@ -155,11 +163,13 @@
                         })),
                     });
                     this.$store.dispatch("clearBasket");
+                    this.bookingSuccess = true;
                 } catch (error) {
                     if(is422(error)) {
                         this.errors = error.response.data.errors;
                     }
                     this.status = error.response.status;
+                    this.error = true;
                 } finally {
                     this.loading = false;
                 }
