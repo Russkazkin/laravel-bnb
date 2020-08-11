@@ -116,6 +116,7 @@
                             to: basketItem.dates.to
                         })),
                     });
+                    this.$store.dispatch("clearBasket");
                 } catch (e) {
 
                 } finally {
