@@ -6,33 +6,69 @@
                     <div class="form-row mb-3">
                         <div class="col-md-6">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" v-model="customer.name">
+                            <input type="text"
+                                   class="form-control"
+                                   name="name"
+                                   id="name"
+                                   v-model="customer.name"
+                                   :class="[{'is-invalid' : errorsFor('customer.name')}]">
+                            <validation-errors :errors="errorsFor('customer.name')"></validation-errors>
                         </div>
                         <div class="col-md-6">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" v-model="customer.email">
+                            <input type="email"
+                                   class="form-control"
+                                   name="email"
+                                   id="email"
+                                   v-model="customer.email"
+                                   :class="[{'is-invalid' : errorsFor('customer.email')}]">
+                            <validation-errors :errors="errorsFor('customer.email')"></validation-errors>
                         </div>
                     </div>
                     <div class="form-group mb-3">
                         <label for="address">Address</label>
-                        <input type="text" class="form-control" name="address" id="address" v-model="customer.address">
+                        <input type="text"
+                               class="form-control"
+                               name="address"
+                               id="address"
+                               v-model="customer.address"
+                               :class="[{'is-invalid' : errorsFor('customer.address')}]">
+                        <validation-errors :errors="errorsFor('customer.address')"></validation-errors>
                     </div>
                     <div class="form-row mb-3">
                         <div class="col-md-6">
                             <label for="country">Country</label>
-                            <input type="text" class="form-control" name="country" id="country" v-model="customer.country">
+                            <input type="text"
+                                   class="form-control"
+                                   name="country"
+                                   id="country"
+                                   v-model="customer.country"
+                                   :class="[{'is-invalid' : errorsFor('customer.country')}]">
+                            <validation-errors :errors="errorsFor('customer.country')"></validation-errors>
                         </div>
                         <div class="col-md-4">
                             <label for="state">State</label>
-                            <input type="text" class="form-control" name="state" id="state" v-model="customer.state">
+                            <input type="text"
+                                   class="form-control"
+                                   name="state"
+                                   id="state"
+                                   v-model="customer.state"
+                                   :class="[{'is-invalid' : errorsFor('customer.state')}]">
+                            <validation-errors :errors="errorsFor('customer.state')"></validation-errors>
                         </div>
                         <div class="col-md-2">
                             <label for="zip">ZIP</label>
-                            <input type="text" class="form-control" name="zip" id="zip" v-model="customer.zip">
+                            <input type="text"
+                                   class="form-control"
+                                   name="zip"
+                                   id="zip"
+                                   v-model="customer.zip"
+                                   :class="[{'is-invalid' : errorsFor('customer.zip')}]">
+                            <validation-errors :errors="errorsFor('customer.zip')"></validation-errors>
                         </div>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn btn-primary btn-block">Book Now</button>
+                    <button type="submit" class="btn btn btn-primary btn-block" :disabled="loading">Book Now</button>
                 </form>
             </div>
             <div class="col-md-8" v-else>
@@ -82,6 +118,7 @@
 <script>
     import { mapState, mapGetters } from "vuex";
     import validationErrors from "../shared/mixins/validationErrors";
+    import {is422} from "../shared/utils/responce";
     export default {
         name: "Basket",
         mixins: [validationErrors],
@@ -107,6 +144,7 @@
         methods: {
             async book() {
                 this.loading = true;
+                this.errors = null;
                 try {
                     await axios.post(`/api/checkout`, {
                         customer: this.customer,
@@ -117,8 +155,11 @@
                         })),
                     });
                     this.$store.dispatch("clearBasket");
-                } catch (e) {
-
+                } catch (error) {
+                    if(is422(error)) {
+                        this.errors = error.response.data.errors;
+                    }
+                    this.status = error.response.status;
                 } finally {
                     this.loading = false;
                 }
