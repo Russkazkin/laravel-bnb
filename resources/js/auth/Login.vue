@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card card-body">
-                <form>
+                <form @submit.prevent="login">
                     <div class="form-group">
                         <label for="email">
                             E-mail
@@ -30,7 +30,7 @@
                                :class="[{'is-invalid' : errorsFor('password')}]">
                         <validation-errors :errors="errorsFor('password')"></validation-errors>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="loading">Login</button>
 
                     <hr>
 
@@ -60,8 +60,32 @@ export default {
         return {
             email: null,
             password: null,
+            loading: false,
+            error: false,
         }
-    }
+    },
+    methods: {
+        async login() {
+            this.loading = true;
+            this.errors = null;
+            try {
+                await axios.get('/sanctum/csrf-cookie');
+                await axios.post('/login', {
+                    email: this.email,
+                    password: this.password,
+                });
+                await axios.get('/user');
+            } catch (error) {
+                if(is422(error)) {
+                    this.errors = error.response.data.errors;
+                } else {
+                    this.error = true;
+                }
+            } finally {
+                this.loading = false;
+            }
+        }
+    },
 }
 </script>
 
