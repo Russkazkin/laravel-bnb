@@ -13,7 +13,9 @@
                                id="email"
                                name="email"
                                placeholder="Enter your email"
-                               v-model="email">
+                               v-model="email"
+                               :class="[{'is-invalid' : errorsFor('email')}]">
+                        <validation-errors :errors="errorsFor('email')"></validation-errors>
                     </div>
                     <div class="form-group">
                         <label for="password">
@@ -24,9 +26,11 @@
                                id="password"
                                name="password"
                                placeholder="Enter your password"
-                               v-model="password">
+                               v-model="password"
+                               :class="[{'is-invalid' : errorsFor('password')}]">
+                        <validation-errors :errors="errorsFor('password')"></validation-errors>
                     </div>
-                    <button type="submin" class="btn btn-primary btn-block mb-4">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
 
                     <hr>
 
@@ -46,8 +50,12 @@
 </template>
 
 <script>
+import validationErrors from "../shared/mixins/validationErrors";
+import {is422} from "../shared/utils/responce";
+
 export default {
     name: "Login",
+    mixins: [validationErrors],
     data() {
         return {
             email: null,

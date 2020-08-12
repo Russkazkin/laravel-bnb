@@ -1976,6 +1976,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../shared/mixins/validationErrors */ "./resources/js/shared/mixins/validationErrors.js");
+/* harmony import */ var _shared_utils_responce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/utils/responce */ "./resources/js/shared/utils/responce.js");
 //
 //
 //
@@ -2023,8 +2025,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
+  mixins: [_shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_0__["default"]],
   data: function data() {
     return {
       email: null,
@@ -61704,81 +61713,101 @@ var render = function() {
       _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "card card-body" }, [
           _c("form", [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "email" } }, [
-                _vm._v(
-                  "\n                            E-mail\n                        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.email,
-                    expression: "email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "email",
-                  name: "email",
-                  placeholder: "Enter your email"
-                },
-                domProps: { value: _vm.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { attrs: { for: "email" } }, [
+                  _vm._v(
+                    "\n                            E-mail\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.email,
+                      expression: "email"
                     }
-                    _vm.email = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  class: [{ "is-invalid": _vm.errorsFor("email") }],
+                  attrs: {
+                    type: "text",
+                    id: "email",
+                    name: "email",
+                    placeholder: "Enter your email"
+                  },
+                  domProps: { value: _vm.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.email = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _c("validation-errors", {
+                  attrs: { errors: _vm.errorsFor("email") }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "password" } }, [
-                _vm._v(
-                  "\n                            Password\n                        "
-                )
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.password,
-                    expression: "password"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "password",
-                  id: "password",
-                  name: "password",
-                  placeholder: "Enter your password"
-                },
-                domProps: { value: _vm.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              { staticClass: "form-group" },
+              [
+                _c("label", { attrs: { for: "password" } }, [
+                  _vm._v(
+                    "\n                            Password\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.password,
+                      expression: "password"
                     }
-                    _vm.password = $event.target.value
+                  ],
+                  staticClass: "form-control",
+                  class: [{ "is-invalid": _vm.errorsFor("password") }],
+                  attrs: {
+                    type: "password",
+                    id: "password",
+                    name: "password",
+                    placeholder: "Enter your password"
+                  },
+                  domProps: { value: _vm.password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.password = $event.target.value
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _c("validation-errors", {
+                  attrs: { errors: _vm.errorsFor("password") }
+                })
+              ],
+              1
+            ),
             _vm._v(" "),
             _c(
               "button",
               {
                 staticClass: "btn btn-primary btn-block mb-4",
-                attrs: { type: "submin" }
+                attrs: { type: "submit" }
               },
               [_vm._v("Login")]
             ),
