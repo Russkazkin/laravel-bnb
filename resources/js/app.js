@@ -35,5 +35,7 @@ const app = new Vue({
     },
     async beforeCreate() {
         this.$store.dispatch("loadStoredState");
+
+        await axios.get('/user');
     },
 });

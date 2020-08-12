@@ -79985,7 +79985,10 @@ var app = new Vue({
             case 0:
               _this.$store.dispatch("loadStoredState");
 
-            case 1:
+              _context.next = 3;
+              return axios.get('/user');
+
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -81144,7 +81147,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     basket: {
       items: []
-    }
+    },
+    isLoggedIn: false,
+    user: {}
   },
   mutations: {
     setLastSearch: function setLastSearch(state, payload) {
