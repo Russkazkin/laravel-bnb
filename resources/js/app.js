@@ -26,6 +26,16 @@ Vue.component("validation-errors", ValidationErrors);
 
 const store = new Vuex.Store(storeDefinition);
 
+window.axios.interceptors.response.use(
+    response => response,
+    error => {
+        if(error.response.status === 401) {
+            store.dispatch("logOut");
+        }
+        return Promise.reject(error);
+    }
+);
+
 const app = new Vue({
     el: '#app',
     router,
