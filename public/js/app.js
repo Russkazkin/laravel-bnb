@@ -1980,6 +1980,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/mixins/validationErrors */ "./resources/js/shared/mixins/validationErrors.js");
 /* harmony import */ var _shared_utils_responce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../shared/utils/responce */ "./resources/js/shared/utils/responce.js");
+/* harmony import */ var _shared_utils_auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/utils/auth */ "./resources/js/shared/utils/auth.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2039,6 +2040,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   mixins: [_shared_mixins_validationErrors__WEBPACK_IMPORTED_MODULE_1__["default"]],
@@ -2073,11 +2075,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 7:
+                Object(_shared_utils_auth__WEBPACK_IMPORTED_MODULE_3__["logIn"])();
+                _context.next = 10;
+                return _this.$store.dispatch("loadUser");
+
+              case 10:
                 _context.next = 12;
+                return _this.$router.push({
+                  name: "home"
+                });
+
+              case 12:
+                _context.next = 17;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](2);
 
                 if (Object(_shared_utils_responce__WEBPACK_IMPORTED_MODULE_2__["is422"])(_context.t0)) {
@@ -2086,17 +2099,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.error = true;
                 }
 
-              case 12:
-                _context.prev = 12;
+              case 17:
+                _context.prev = 17;
                 _this.loading = false;
-                return _context.finish(12);
+                return _context.finish(17);
 
-              case 15:
+              case 20:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[2, 9, 12, 15]]);
+        }, _callee, null, [[2, 14, 17, 20]]);
       }))();
     }
   }

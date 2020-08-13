@@ -52,6 +52,7 @@
 <script>
 import validationErrors from "../shared/mixins/validationErrors";
 import {is422} from "../shared/utils/responce";
+import {logIn} from "../shared/utils/auth";
 
 export default {
     name: "Login",
@@ -74,6 +75,9 @@ export default {
                     email: this.email,
                     password: this.password,
                 });
+                logIn();
+                await this.$store.dispatch("loadUser");
+                await this.$router.push({name: "home"});
             } catch (error) {
                 if(is422(error)) {
                     this.errors = error.response.data.errors;
