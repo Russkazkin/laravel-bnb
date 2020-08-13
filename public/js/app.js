@@ -79992,12 +79992,14 @@ var app = new Vue({
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.$store.dispatch("loadStoredState");
+              _context.next = 2;
+              return _this.$store.dispatch("loadStoredState");
 
-              _context.next = 3;
-              return axios.get('/user');
+            case 2:
+              _context.next = 4;
+              return _this.$store.dispatch("loadUser");
 
-            case 3:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -81212,7 +81214,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     setUser: function setUser(state, payload) {
       state.user = payload;
     },
-    setLoggedIt: function setLoggedIt(state, payload) {
+    setLoggedIn: function setLoggedIn(state, payload) {
       state.isLoggedIn = payload;
     }
   },
