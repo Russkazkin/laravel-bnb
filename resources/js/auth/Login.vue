@@ -74,7 +74,6 @@ export default {
                     email: this.email,
                     password: this.password,
                 });
-                await axios.get('/user');
             } catch (error) {
                 if(is422(error)) {
                     this.errors = error.response.data.errors;
