@@ -23,6 +23,12 @@ export default {
         setBasket(state, payload) {
             state.basket = payload;
         },
+        setUser(state, payload) {
+            state.user = payload;
+        },
+        setLoggedIt(state, payload) {
+            state.isLoggedIn = payload;
+        }
     },
     actions: {
         setLastSearch(context, payload) {

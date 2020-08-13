@@ -81165,6 +81165,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     setBasket: function setBasket(state, payload) {
       state.basket = payload;
+    },
+    setUser: function setUser(state, payload) {
+      state.user = payload;
+    },
+    setLoggedIt: function setLoggedIt(state, payload) {
+      state.isLoggedIn = payload;
     }
   },
   actions: {
