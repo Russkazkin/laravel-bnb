@@ -11,6 +11,22 @@
                     <li class="nav-item">
                         <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>
                     </li>
+                    <li class="nav-item" v-if="!isLoggedIn">
+                        <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
+                    </li>
+                    <li class="nav-item" v-if="!isLoggedIn">
+                        <router-link class="nav-link" :to="{name: 'register'}">Register</router-link>
+                    </li>
+                    <li class="nav-item dropdown" v-if="isLoggedIn">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.name }}
+                            <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <router-link class="dropdown-item" :to="{name: 'logout'}">Logout</router-link>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <router-link class="btn btn-outline-light" :to="{name: 'basket'}">
@@ -33,6 +49,8 @@
         computed: {
             ...mapState({
                 lastSearchComputed: "lastSearch",
+                isLoggedIn: "isLoggedIn",
+                user: "user",
             }),
             ...mapGetters({
                 itemsInBasket: "itemsInBasket",
