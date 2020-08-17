@@ -2003,7 +2003,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 return axios.post("/logout");
 
               case 3:
-                _this.$store.dispatch("logout");
+                _this.$store.dispatch("logOut");
 
                 _context.next = 9;
                 break;
@@ -2012,7 +2012,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 _context.prev = 6;
                 _context.t0 = _context["catch"](0);
 
-                _this.$store.dispatch("logout");
+                _this.$store.dispatch("logOut");
 
               case 9:
               case "end":

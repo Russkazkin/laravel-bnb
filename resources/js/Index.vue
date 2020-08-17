@@ -60,9 +60,9 @@
             async logout() {
                 try {
                     await axios.post("/logout");
-                    this.$store.dispatch("logout");
+                    this.$store.dispatch("logOut");
                 } catch (error) {
-                    this.$store.dispatch("logout");
+                    this.$store.dispatch("logOut");
                 }
             },
         }
