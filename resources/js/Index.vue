@@ -24,7 +24,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <router-link class="dropdown-item" :to="{name: 'logout'}">Logout</router-link>
+                            <a class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
                         </div>
                     </li>
                 </ul>
@@ -55,6 +55,16 @@
             ...mapGetters({
                 itemsInBasket: "itemsInBasket",
             }),
+        },
+        methods: {
+            async logout() {
+                try {
+                    await axios.post("/logout");
+                    this.$store.dispatch("logout");
+                } catch (error) {
+                    this.$store.dispatch("logout");
+                }
+            },
         }
     }
 </script>
