@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card card-body">
-                    <form @submit.prevent="login">
+                    <form @submit.prevent="register">
                         <div class="form-group">
                             <label for="name">
                                 Name
@@ -13,7 +13,7 @@
                                    id="name"
                                    name="name"
                                    placeholder="Enter your name"
-                                   v-model="name"
+                                   v-model="user.name"
                                    :class="[{'is-invalid' : errorsFor('name')}]">
                             <validation-errors :errors="errorsFor('name')"></validation-errors>
                         </div>
@@ -26,7 +26,7 @@
                                    id="email"
                                    name="email"
                                    placeholder="Enter your email"
-                                   v-model="email"
+                                   v-model="user.email"
                                    :class="[{'is-invalid' : errorsFor('email')}]">
                             <validation-errors :errors="errorsFor('email')"></validation-errors>
                         </div>
@@ -39,7 +39,7 @@
                                    id="password"
                                    name="password"
                                    placeholder="Enter your password"
-                                   v-model="password"
+                                   v-model="user.password"
                                    :class="[{'is-invalid' : errorsFor('password')}]">
                             <validation-errors :errors="errorsFor('password')"></validation-errors>
                         </div>
@@ -52,21 +52,17 @@
                                    id="password_confirmation"
                                    name="password_confirmation"
                                    placeholder="Confirm your password"
-                                   v-model="password_confirmation"
+                                   v-model="user.password_confirmation"
                                    :class="[{'is-invalid' : errorsFor('password_confirmation')}]">
                             <validation-errors :errors="errorsFor('password_confirmation')"></validation-errors>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="loading">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block mb-4" :disabled="loading">Register</button>
 
                         <hr>
 
                         <div>
-                            No account yet?
-                            <router-link :to="{name: 'home'}" class="font-weight-bold">Register</router-link>
-                        </div>
-                        <div>
-                            Forgotten password?
-                            <router-link :to="{name: 'home'}" class="font-weight-bold">Reset password</router-link>
+                            Already have an account?
+                            <router-link :to="{name: 'login'}" class="font-weight-bold">Login</router-link>
                         </div>
                     </form>
                 </div>
@@ -85,6 +81,12 @@ export default {
     mixins: [validationErrors],
     data() {
         return {
+            user: {
+                name: null,
+                email: null,
+                password: null,
+                password_confirmation: null,
+            },
             email: null,
             password: null,
             loading: false,
@@ -92,7 +94,7 @@ export default {
         }
     },
     methods: {
-        async login() {
+        async register() {
             this.loading = true;
             this.errors = null;
             try {
