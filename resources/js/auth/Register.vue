@@ -77,7 +77,7 @@ import {is422} from "../shared/utils/responce";
 import {logIn} from "../shared/utils/auth";
 
 export default {
-    name: "Login",
+    name: "Register",
     mixins: [validationErrors],
     data() {
         return {
@@ -87,8 +87,6 @@ export default {
                 password: null,
                 password_confirmation: null,
             },
-            email: null,
-            password: null,
             loading: false,
             error: false,
         }
@@ -98,14 +96,13 @@ export default {
             this.loading = true;
             this.errors = null;
             try {
-                await axios.get('/sanctum/csrf-cookie');
-                await axios.post('/login', {
-                    email: this.email,
-                    password: this.password,
-                });
-                logIn();
-                await this.$store.dispatch("loadUser");
-                await this.$router.push({name: "home"});
+                const response = await axios.post('/register', this.user);
+
+                if(response.status === 201) {
+                    logIn();
+                    await this.$store.dispatch("loadUser");
+                    await this.$router.push({name: "home"});
+                }
             } catch (error) {
                 if(is422(error)) {
                     this.errors = error.response.data.errors;
